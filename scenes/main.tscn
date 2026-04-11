@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dly4l6m365e2c"]
+
+[ext_resource type="Script" uid="uid://b8qpcadh18jjo" path="res://scripts/core/main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://cna37cp0wxnj0" path="res://scripts/vr/vr_locomotion.gd" id="2_loco"]
+[ext_resource type="Script" uid="uid://c7who4p72ktwq" path="res://scripts/vr/hand_interaction.gd" id="3_hand"]
+[ext_resource type="Script" uid="uid://dwsjkcd71umne" path="res://scripts/npc/npc_controller.gd" id="4_npc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape_floor"]
+size = Vector3(20, 0.1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_npc"]
+size = Vector3(0.5, 1.8, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape_npc"]
+radius = 2.0
+
+[node name="Main" type="Node3D" unique_id=1328105054]
+script = ExtResource("1_main")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=787377734]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 5, 0)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=413321204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=506238296]
+mesh = SubResource("BoxMesh_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=878287988]
+shape = SubResource("BoxShape_floor")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=623749808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9932015, 0)
+script = ExtResource("2_loco")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1198717627]
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D" unique_id=1462205398]
+tracker = &"left_hand"
+script = ExtResource("3_hand")
+hand_side = "left"
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/LeftHand" unique_id=1024985996]
+target_position = Vector3(0, 0, -5)
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=1022910987]
+tracker = &"right_hand"
+script = ExtResource("3_hand")
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/RightHand" unique_id=1418572399]
+target_position = Vector3(0, 0, -5)
+
+[node name="NPC_Prueba" type="Node3D" parent="." unique_id=567410835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -2.5)
+script = ExtResource("4_npc")
+npc_id = "sofia_ramos"
+display_name = "Sofía Ramos (PoC)"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC_Prueba" unique_id=409485176]
+mesh = SubResource("BoxMesh_npc")
+
+[node name="ProximityArea" type="Area3D" parent="NPC_Prueba" unique_id=1759087867]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_Prueba/ProximityArea" unique_id=116403803]
+shape = SubResource("SphereShape_npc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NPC_Prueba" unique_id=1393904717]
+unit_size = 2.0
+max_distance = 10.0

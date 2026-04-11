@@ -11,8 +11,23 @@ config_version=5
 [application]
 
 config/name="Limonchero3D-TE"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+XRToolsUserSettings="*uid://bqgb8i74tm0t"
+XRToolsRumbleManager="*uid://by853dk86g1qw"
+GameManager="*uid://brxelbkp5gs5b"
+SceneLoader="*uid://ojqnm34xomjp"
+LlmClient="*uid://bouqgwdwrdo6r"
+VoiceManager="*uid://1gr632sufm03"
+EnglishAssistant="*uid://g60mw7457688"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
 
 [physics]
 
