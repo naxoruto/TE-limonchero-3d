@@ -1,0 +1,333 @@
+Proyecto semestral
+ICI5442 – Tecnologías emergentes
+II semestre 2025
+
+1. Objetivo
+El objetivo del proyecto semestral del curso ICI5442 - Tecnologías Emergentes, es desarrollar un prototipo funcional basado en una
+tecnología emergente seleccionada por los grupos de trabajo, con el propósito de explorar y aplicar conocimientos teóricos y prácticos
+en un contexto innovador. A través de las distintas etapas, se busca no solo diseñar y construir una solución tecnológica viable, sino
+también evaluar su impacto mediante pruebas con usuarios, analizando variables como la usabilidad, la aceptación, la motivación y las
+emociones, y comparando los resultados entre versiones del prototipo. Este proceso se complementa con la entrega de informes
+detallados y presentaciones formales, lo que fomenta habilidades técnicas, analíticas y de comunicación en los estudiantes.
+
+2. Requisitos administrativos
+En este título se presentan los requisitos de ámbito administrativo que regulan el trabajo a realizar. Se deben respetar todos los puntos
+descritos. Cualquier incumplimiento está sujeto a las sanciones descritas en este documento.
+2.1. Conformación e inscripción de grupos
+La conformación de los grupos para esta actividad deberá ser realizada por los alumnos y formalizada en el aula virtual. Los alumnos
+deberán respetar los grupos que definan ellos mismos, sin poder alterar la conformación inscrita en el aula. El máximo de alumnos por
+cada grupo es de 4 (cuatro) alumnos y el mínimo 3 (tres). Para la designación de los representantes de cada grupo:
+1.
+
+El grupo deberá designar un representante, denominado jefe de grupo. El jefe de grupo estará encargado de realizar
+inscripciones, entregas o cualquier acto formal previsto en este documento.
+
+2.
+
+Luego de conformados los grupos, el jefe de grupo podrá ser cambiado sólo 1 vez durante el curso. Cada cambio extra será
+penalizado con un 10% de su nota final de evaluación, por encima de cualquier caso descrito.
+
+3.
+
+Las personas sin grupo podrán ser sorteadas para un nuevo grupo. Para ello, deberá avisar al profesor en un plazo máximo de
+02 (dos) días corridos, contados a partir de la fecha de cierre de inscripciones.
+
+Es responsabilidad de los alumnos coordinarse en los momentos propicios para desarrollar la actividad presentada. Cualquier
+incumplimiento en este punto es atingente al descuento final en la nota grupal según lo especificado en el punto 3.3 de este documento.
+2.2. Temáticas e inscripción
+Los temas deberán ser seleccionados por los estudiantes según el listado disponible en el programa de la asignatura. Si algún grupo
+cambia de tema, deberá ser autorizado expresamente por el profesor; de lo contrario, quedará automáticamente eliminado del proceso
+de evaluación. Debe cuidar que los temas a utilizar no se puedan repetir entre grupos. El tema incluye el ámbito de aplicación; por
+ejemplo: Asistente virtual utilizando Dialogflow para clientes de una AFP es un tema distinto de Asistente virtual utilizando Azure Bot para
+alumnos universitarios.
+Todos los temas deberán incluir el uso de Grandes Modelos de Lenguaje (LLMs) + una tecnología emergente.
+2.3. Descuentos y sanciones
+Cualquiera de las normas que regulan el trabajo planteado que no sea cumplida tendrá un efecto en su nota final. Los grupos de trabajo,
+al inscribir su tema, declaran, de forma implícita, conocer todos los elementos exigidos en este documento. Se debe considerar
+descuentos de nota final por:
+1.
+
+Conformación de grupos: No respetar la conformación de grupos presentada conlleva una nota final de 1,0 para todos los
+integrantes del grupo. Queda exento de esta falta el caso en que algún integrante de un grupo se niega, por acción u omisión, a
+trabajar con su grupo. En este caso, no deberá ser agregado en los documentos (hitos de entrega) a ser entregados y la nota
+1,0 será solo para el integrante señalado.
+
+2.
+
+Múltiple representación: Los grupos deberán cuidar que tanto las publicaciones de información, la selección de temas, las
+entregas por aula, entre otros, se realicen sólo una vez y por el jefe de grupo. Aquellos grupos que realicen más de una entrega
+Página 1 de 4
+Pontificia Universidad Católica de Valparaíso
+
+o más de un registro en el aula, estos se anularán entre ellos, quedando en estado de no entregado y siendo calificados con
+nota 1.0.
+3.
+
+Medio de entrega: El único medio oficial de entrega es por aula virtual, según los parámetros establecidos para la entrega.
+Remitir la entrega por otro medio equivale a no realizar la entrega y una calificación de 1,0.
+
+4.
+
+Medio de consultas: El único medio de consulta es en los horarios de clase o directamente con el profesor. No respetar esta
+forma de comunicación implica un descuento del 10% de su nota final. También se podrán realizar consultas en los horarios
+de clases y de consultas.
+
+5.
+
+Atrasos en entrega: El descuento por atraso en la entrega corresponde al 20% de su nota final por cada 24 horas o fracción de
+hora de atraso. Se considera una entrega atrasada desde el segundo posterior al cierre planificado de las entregas. Para una
+evaluación, se permiten hasta 3 periodos de atraso acumulados.
+
+6.
+
+Copias y plagios: Si el grupo extrae información, contenidos o cualquier elemento textual de algún documento, otro autor o la
+red será considerado plagio, lo cual conllevará la eliminación del grupo con nota 1.0. Esto también se aplica a fuentes no
+referenciadas. Si distintos grupos copian, comparten o transmiten información, serán sancionados con el 50% de su nota
+como descuento, así como con las sanciones académicas que establezca el reglamento de estudios.
+
+7.
+
+Desarrollo de terceros: Si el grupo entrega la labor de desarrollar parte o totalidad de la evaluación a un tercero que no
+pertenezca al grupo serán sancionados con la eliminación del equipo y nota 1.0, y las sanciones académicas que considera el
+reglamento de estudios. Los medios para acreditar que se incurrió en esta falta serán:
+a.
+
+Interrogación grupal a los integrantes, en donde, si no saben responder a las consultas sobre su mismo trabajo,
+serán catalogados por esta falta administrativa.
+
+b.
+
+Interrogación individual a los integrantes, en donde, si no saben responder a las consultas sobre su mismo trabajo,
+serán catalogados por esta falta administrativa.
+
+Ambas instancias descritas están reguladas mediante la actividad de defensa de la evaluación.
+Este es un trabajo grupal, pero las notas podrán ser individuales según el desempeño del estudiante en la presentación del proyecto.
+Además, será obligatorio participar en una instancia de difusión que se anunciará durante el semestre.
+2.4. Recursos de reposición
+Cualquier solicitud o no acuerdo con la evaluación entregada por el profesor o su respectiva rúbrica, deberá ser gestionada a través de
+un recurso de reposición tal cual establecen los arts. 204 y siguientes de la Ley 1552, de Código de Procesamiento Civil. El plazo para
+remitir el recurso de reposición será de 05 días corridos posteriores a la entrega de la rúbrica y nota. El recurso de reposición deberá ser
+remitido vía aula virtual. Cualquier presentación de recurso de reposición que no cumpla con lo anteriormente señalado será clasificada
+como fuera de bases y automáticamente quedará rechazada.
+2.5. Modificación al enunciado
+Se podrán efectuar modificaciones de contenido al enunciado de este proyecto. Todo cambio podrá implicar también un ajuste a lo
+establecido en el punto 2.3. Esto deberá informarse por el mismo medio de publicación de este enunciado.
+
+Página 2 de 4
+Pontificia Universidad Católica de Valparaíso
+
+3. Requisitos técnicos
+3.1. Formato
+Cada entrega deberá ir con un informe en idioma español que explique y detalle todo el trabajo realizado. El formato de diseño del
+documento es el utilizado en la revista Software (https://www.mdpi.com/journal/software) de Multidisciplinary Digital Publishing
+Institute (https://www.mdpi.com/journal/software/instructions).
+3.2. Entrega 1: etapa de diseño
+El objetivo de esta etapa es establecer las bases para el desarrollo de un proyecto basado en una tecnología innovadora, definiendo
+metas claras, seleccionando y justificando un enfoque metodológico, y creando un plan de trabajo estructurado con fases, actividades y
+cronograma. Asimismo, busca diseñar una solución inicial mediante esquemas, requisitos, diagramas y maquetas, e implementar un
+ejemplo básico modificado que demuestre la viabilidad técnica y la alineación con los propósitos establecidos. El contenido y/o
+actividades mínimas de esta etapa son:
+1.
+
+Enunciar los objetivos (general y específicos) del proyecto de tecnología emergente a desarrollar.
+
+2.
+
+Enunciar y justificar la metodología de desarrollo a emplear.
+
+3.
+
+Elaborar el plan y programa de trabajo del proyecto, considerando al menos:
+
+4.
+
+a.
+
+Estructura de desglose (EDT) con fases y al menos 3 niveles de desglose.
+
+b.
+
+Programa con actividades, entregables y RRHH involucrados.
+
+c.
+
+Carta Gantt muy detallada con fechas de inicio y término, actividades e hitos de entrega, tanto externos como
+internos.
+
+Elaborar el diseño del prototipo, considerando al menos:
+a.
+
+Esquema (dibujo) general.
+
+b.
+
+Listado de requisitos/requerimientos funcionales y no funcionales.
+
+c.
+
+Diagrama de casos de uso.
+
+d.
+
+Maquetas (mockups) de vistas principales.
+
+e.
+
+Vista funcional: diagramas de secuencia de las principales funcionalidades y diagramas de casos de uso.
+
+f.
+
+Vista estática: diagrama ER o similar.
+
+g.
+
+Vista dinámica: Diagrama de estados o similar para elementos con estados, en caso de que el diseño lo requiera.
+
+5.
+
+Debe implementar un ejemplo básico funcional que abarque al menos 1 caso de uso propuesto, que permitan dar una idea
+preliminar y general del prototipo a desarrollar validando su factibilidad técnica
+
+6.
+
+Dicho desarrollo preliminar permite verificar la factibilidad de implementar la idea con la tecnología emergente escogida,
+además de chequear la coherencia y consistencia con sus objetivos y con los escenarios y ejercicios presentados.
+
+3.3. Entrega 2: avance de prototipo
+El objetivo de la Entrega 2: Avance de Prototipo es presentar una versión actualizada y corregida del proyecto, ajustando objetivos,
+metodología, plan y diseño según retroalimentación previa, y mostrando progresos mediante un resumen claro de funcionalidades
+completadas y pendientes. Además, se busca demostrar el funcionamiento del prototipo mediante un video demostrativo y preparar
+pruebas con usuarios, definiendo escenarios, procedimientos, efectos a medir —como la usabilidad o la aceptación— y cuestionarios pre
+y post, junto con una prueba piloto que incluya condiciones y herramientas de evaluación. El contenido y/o las actividades mínimas de
+esta etapa son:
+1.
+
+Entregar objetivos, metodología, plan y programa y diseño del prototipo actualizado (respecto de posibles cambios) y
+corregido respecto a las observaciones realizadas en la entrega anterior
+
+2.
+
+Proveer Gantt con control de cambios indicando lo avanzado del prototipo, detallando claramente qué funcionalidades, casos
+de uso o escenarios se encuentran listos y cuales están pendientes.
+
+3.
+
+Entregar un video demo con el avance de prototipo funcionando, destacando las funcionalidades o casos de uso listos.
+
+4.
+
+Diseñar las pruebas con usuarios, definiendo al menos los siguientes aspectos:
+
+Página 3 de 4
+Pontificia Universidad Católica de Valparaíso
+
+a.
+
+Escenarios o funcionalidades para probar por los usuarios
+
+b.
+
+Describir el procedimiento de aplicación de pruebas a realizar, considerando momentos, tiempos asignados, medios:
+directos o virtual, entre otros.
+
+c.
+
+Efectos que se buscan medir en los usuarios que usen el prototipo; p. ej. Usabilidad, nivel de aceptación de la
+tecnología, intención de uso (SUS u otro), emociones (AEQ), motivación (IMI) o alguna otra variable
+afectiva/emocional de acuerdo con algún modelo existente.
+
+d.
+
+Cuestionarios de percepción pre y post
+
+5.
+
+Definir la prueba piloto con usuarios, condiciones de aplicación y cuestionario de opinión a utilizar
+
+6.
+
+Esta etapa considera al menos el 70% del desarrollo del software, lo cual debe quedar evidenciado tanto en las funcionalidades
+demostradas como el detalle del cumplimiento de la Gantt.
+
+3.4. Entrega 3: software final y validación
+El objetivo de la Etapa de Software Final y Validación es completar el desarrollo del prototipo, incorporando correcciones a las
+observaciones previas y asegurando que todas las funcionalidades, los casos de uso y los escenarios comprometidos estén plenamente
+implementados. Se busca demostrar su operatividad mediante un video demostrativo, documentar su aplicación con usuarios a través
+de videos o fotografías, y entregar los códigos fuente finales, ejecutables y demás materiales, consolidando así los resultados del
+proyecto. El contenido y/o actividades mínimas de esta etapa son:
+1.
+
+Corregir las observaciones realizadas a la entrega anterior
+
+2.
+
+Implementar el prototipo completo, con todas las funcionalidades, los casos de uso y los escenarios comprometidos.
+
+3.
+
+Entregar un video demo con la versión completa del prototipo funcionando.
+
+4.
+
+Entregar un video o fotografías de la experiencia de los usuarios utilizando o aplicando el prototipo.
+
+5.
+
+Proveer códigos fuente finales, ejecutables y otros.
+
+3.5. Informes y presentaciones del proyecto
+Cada entrega se debe entregar un informe que explique detalladamente el trabajo realizado y slides a utilizar por el equipo en la
+presentación. La presentación de cada entrega debe considerar al menos los siguientes puntos:
+1.
+
+Se extenderá por 5 minutos al término de los cuales la Comisión Evaluadora realizará preguntas a cada uno de los integrantes
+sobre:
+a.
+
+2.
+
+3.
+
+4.
+
+Lo recién expuesto y los contenidos entregados.
+
+Siguiendo estas líneas, la presentación debe considerar los siguientes requisitos mínimos:
+a.
+
+La exposición es formal en actitud, pero no en vestimenta.
+
+b.
+
+Debe durar hasta 5 minutos. Al cumplirse el tiempo de exposición, la comisión indicará el término del tiempo
+disponible al grupo expositor y comenzará con la ronda de preguntas.
+
+c.
+
+Se deben utilizar transparencias (ej: Microsoft PowerPoint), en donde se pueden incorporar diagramas y modelos
+explicativos que faciliten la rápida comprensión de lo que se expone.
+
+La evaluación de la defensa (presentación) considerará los siguientes aspectos:
+a.
+
+Cumplimiento de los requerimientos antes mencionados.
+
+b.
+
+Calidad y claridad de la exposición en términos de: Formalidad, Claridad de las ideas presentadas, coordinación del
+equipo de exposición, calidad de los elementos de apoyo (transparencias con diagramas, etc.), seguridad y fluidez
+de los exponentes, uso de lenguaje adecuado, etc.
+
+c.
+
+En el caso de la parte de defensa de proyecto, se considerará la capacidad para responder de manera clara y precisa
+a las preguntas realizadas, que demuestren el trabajo realizado por cada integrante de acuerdo con la planificación
+entregada en el informe.
+
+La asistencia de todos los grupos a las jornadas de presentaciones es de carácter obligatorio, a menos que se indique lo
+contrario. La penalización por ausencia no justificada mediante conducto regular es de 10 décimas por cada ausencia.
+
+Página 4 de 4
+Pontificia Universidad Católica de Valparaíso
+
+
