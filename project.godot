@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 XRToolsUserSettings="*uid://bqgb8i74tm0t"
 XRToolsRumbleManager="*uid://by853dk86g1qw"
 XrSimulator="*uid://ctltchlf2j2r4"
+LlmClient="*uid://bouqgwdwrdo6r"
+VoiceManager="*uid://1gr632sufm03"
 
 [editor_plugins]
 

@@ -116,9 +116,9 @@ Se utilizará una adaptación de la metodología ágil **Scrum**, ajustada a un 
 │   └── 1.4.6. Build final APK + código fuente
 │
 └── 1.5. PRESENTACIONES Y DEFENSA
-    ├── 1.5.1. Presentación Entrega 1 (5 min)
-    ├── 1.5.2. Presentación Entrega 2 (5 min)
-    └── 1.5.3. Presentación Entrega 3 (5 min)
+	├── 1.5.1. Presentación Entrega 1 (5 min)
+	├── 1.5.2. Presentación Entrega 2 (5 min)
+	└── 1.5.3. Presentación Entrega 3 (5 min)
 ```
 
 ### 3.2. Programa de Actividades
@@ -151,8 +151,8 @@ Se utilizará una adaptación de la metodología ágil **Scrum**, ajustada a un 
 
 ```
 SEMANA →        S1      S2      S3      S4      S5      S6      S7      S8      S9      S10     S11     S12
-                7-12    14-20   21-27   28abr   5-11    12-18   19-25   26may   2-8     9-15    16-22   23-29
-                abr     abr     abr     -4may   may     may     may     -1jun   jun     jun     jun     jun
+				7-12    14-20   21-27   28abr   5-11    12-18   19-25   26may   2-8     9-15    16-22   23-29
+				abr     abr     abr     -4may   may     may     may     -1jun   jun     jun     jun     jun
 ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 GESTIÓN         ████████████████████████████████████████████████████████████████████████████████████████████
 Planificación   ████
@@ -259,38 +259,38 @@ Defensa E3                                                                      
 
 ```mermaid
 graph LR
-    subgraph Sistema["Detective Noir VR"]
-        UC1["Explorar escenario"]
-        UC2["Recoger pista"]
-        UC3["Revisar inventario de pistas"]
-        UC4["Interrogar sospechoso por voz"]
-        UC5["Acusar sospechoso ante el jefe"]
-        UC6["Recibir briefing del jefe"]
-        UC7["Consultar asistente de inglés"]
-        UC8["Navegar entre escenarios"]
-    end
+	subgraph Sistema["Detective Noir VR"]
+		UC1["Explorar escenario"]
+		UC2["Recoger pista"]
+		UC3["Revisar inventario de pistas"]
+		UC4["Interrogar sospechoso por voz"]
+		UC5["Acusar sospechoso ante el jefe"]
+		UC6["Recibir briefing del jefe"]
+		UC7["Consultar asistente de inglés"]
+		UC8["Navegar entre escenarios"]
+	end
 
-    Jugador((Jugador / Detective))
-    LLM((Servicio LLM))
-    STT((Servicio STT))
-    TTS((Servicio TTS))
+	Jugador((Jugador / Detective))
+	LLM((Servicio LLM))
+	STT((Servicio STT))
+	TTS((Servicio TTS))
 
-    Jugador --> UC1
-    Jugador --> UC2
-    Jugador --> UC3
-    Jugador --> UC4
-    Jugador --> UC5
-    Jugador --> UC6
-    Jugador --> UC7
-    Jugador --> UC8
+	Jugador --> UC1
+	Jugador --> UC2
+	Jugador --> UC3
+	Jugador --> UC4
+	Jugador --> UC5
+	Jugador --> UC6
+	Jugador --> UC7
+	Jugador --> UC8
 
-    UC4 --> STT
-    UC4 --> LLM
-    UC4 --> TTS
-    UC5 --> LLM
-    UC6 --> LLM
-    UC6 --> TTS
-    UC7 --> LLM
+	UC4 --> STT
+	UC4 --> LLM
+	UC4 --> TTS
+	UC5 --> LLM
+	UC6 --> LLM
+	UC6 --> TTS
+	UC7 --> LLM
 ```
 
 ### 4.5. Diagramas de Secuencia
@@ -299,195 +299,195 @@ graph LR
 
 ```mermaid
 sequenceDiagram
-    participant J as Jugador (Quest 2)
-    participant U as Godot 4 (OpenXR)
-    participant B as Backend (FastAPI)
-    participant W as Whisper (STT)
-    participant L as Ollama (LLM)
-    participant P as Piper (TTS)
+	participant J as Jugador (Quest 2)
+	participant U as Godot 4 (OpenXR)
+	participant B as Backend (FastAPI)
+	participant W as Whisper (STT)
+	participant L as Ollama (LLM)
+	participant P as Piper (TTS)
 
-    J->>U: Presiona botón para hablar
-    U->>U: Activa micrófono, graba audio
-    J->>U: Suelta botón (fin grabación)
-    U->>B: POST /transcribe {audio_wav}
-    B->>W: Transcribir audio a texto
-    W-->>B: "¿Dónde estabas anoche?"
-    B->>B: Agregar al historial del NPC
-    B->>L: POST /generate {system_prompt + historial}
-    L-->>B: "Estuve en casa toda la noche, no sé de qué me hablas..."
-    B->>P: POST /synthesize {texto, voz_npc_id}
-    P-->>B: audio_respuesta.wav
-    B-->>U: {texto_respuesta, audio_wav}
-    U->>U: Mostrar subtítulos en panel
-    U->>J: Reproducir audio 3D en posición del NPC
+	J->>U: Presiona botón para hablar
+	U->>U: Activa micrófono, graba audio
+	J->>U: Suelta botón (fin grabación)
+	U->>B: POST /transcribe {audio_wav}
+	B->>W: Transcribir audio a texto
+	W-->>B: "¿Dónde estabas anoche?"
+	B->>B: Agregar al historial del NPC
+	B->>L: POST /generate {system_prompt + historial}
+	L-->>B: "Estuve en casa toda la noche, no sé de qué me hablas..."
+	B->>P: POST /synthesize {texto, voz_npc_id}
+	P-->>B: audio_respuesta.wav
+	B-->>U: {texto_respuesta, audio_wav}
+	U->>U: Mostrar subtítulos en panel
+	U->>J: Reproducir audio 3D en posición del NPC
 ```
 
 #### 4.5.2. Caso de Uso: Recoger Pista
 
 ```mermaid
 sequenceDiagram
-    participant J as Jugador (Quest 2)
-    participant U as Unity (XR)
-    participant GM as GameManager
+	participant J as Jugador (Quest 2)
+	participant U as Unity (XR)
+	participant GM as GameManager
 
-    J->>U: Se acerca a objeto interactuable
-    U->>U: Mostrar highlight/outline en el objeto
-    J->>U: Presiona Grip para agarrar
-    U->>GM: OnCluePickedUp(clue_id)
-    GM->>GM: Registrar pista en inventario
-    GM->>U: Mostrar notificación "Pista encontrada: [nombre]"
-    U->>J: Feedback háptico (vibración controller)
-    J->>U: Puede inspeccionar el objeto girándolo con las manos
+	J->>U: Se acerca a objeto interactuable
+	U->>U: Mostrar highlight/outline en el objeto
+	J->>U: Presiona Grip para agarrar
+	U->>GM: OnCluePickedUp(clue_id)
+	GM->>GM: Registrar pista en inventario
+	GM->>U: Mostrar notificación "Pista encontrada: [nombre]"
+	U->>J: Feedback háptico (vibración controller)
+	J->>U: Puede inspeccionar el objeto girándolo con las manos
 ```
 
 #### 4.5.3. Caso de Uso: Acusar ante el Jefe
 
 ```mermaid
 sequenceDiagram
-    participant J as Jugador
-    participant U as Unity
-    participant B as Backend
-    participant L as LLM
+	participant J as Jugador
+	participant U as Unity
+	participant B as Backend
+	participant L as LLM
 
-    J->>U: Se acerca al Jefe NPC
-    U->>U: Activar modo acusación
-    J->>U: Habla: "Creo que el culpable es [Sospechoso X] porque..."
-    U->>B: POST /transcribe {audio}
-    B-->>U: texto_acusacion
-    U->>B: POST /evaluate {acusacion, pistas_recopiladas, culpable_real}
-    B->>L: Prompt de evaluación con contexto del caso
-    L-->>B: {correcto: true/false, respuesta_jefe: "..."}
-    B-->>U: resultado
-    alt Acusación correcta
-        U->>J: Jefe felicita, cinemática de resolución
-        U->>U: Pantalla de victoria
-    else Acusación incorrecta
-        U->>J: Jefe rechaza la hipótesis
-        U->>U: Opción de seguir investigando o game over
-    end
+	J->>U: Se acerca al Jefe NPC
+	U->>U: Activar modo acusación
+	J->>U: Habla: "Creo que el culpable es [Sospechoso X] porque..."
+	U->>B: POST /transcribe {audio}
+	B-->>U: texto_acusacion
+	U->>B: POST /evaluate {acusacion, pistas_recopiladas, culpable_real}
+	B->>L: Prompt de evaluación con contexto del caso
+	L-->>B: {correcto: true/false, respuesta_jefe: "..."}
+	B-->>U: resultado
+	alt Acusación correcta
+		U->>J: Jefe felicita, cinemática de resolución
+		U->>U: Pantalla de victoria
+	else Acusación incorrecta
+		U->>J: Jefe rechaza la hipótesis
+		U->>U: Opción de seguir investigando o game over
+	end
 ```
 
 ### 4.6. Diagrama Entidad-Relación
 
 ```mermaid
 erDiagram
-    CASO {
-        string caso_id PK
-        string titulo
-        string descripcion
-        string culpable_id FK
-    }
+	CASO {
+		string caso_id PK
+		string titulo
+		string descripcion
+		string culpable_id FK
+	}
 
-    NPC {
-        string npc_id PK
-        string nombre
-        string rol
-        string personalidad
-        string system_prompt
-        string voz_tts_id
-        boolean es_culpable
-        string caso_id FK
-    }
+	NPC {
+		string npc_id PK
+		string nombre
+		string rol
+		string personalidad
+		string system_prompt
+		string voz_tts_id
+		boolean es_culpable
+		string caso_id FK
+	}
 
-    PISTA {
-        string pista_id PK
-        string nombre
-        string descripcion
-        string ubicacion
-        string relevancia
-        string caso_id FK
-    }
+	PISTA {
+		string pista_id PK
+		string nombre
+		string descripcion
+		string ubicacion
+		string relevancia
+		string caso_id FK
+	}
 
-    PISTA_NPC {
-        string pista_id FK
-        string npc_id FK
-        string tipo_relacion
-    }
+	PISTA_NPC {
+		string pista_id FK
+		string npc_id FK
+		string tipo_relacion
+	}
 
-    JUGADOR {
-        string sesion_id PK
-        string nombre_detective
-    }
+	JUGADOR {
+		string sesion_id PK
+		string nombre_detective
+	}
 
-    INVENTARIO {
-        string sesion_id FK
-        string pista_id FK
-        datetime hora_recopilacion
-        boolean revisada
-    }
+	INVENTARIO {
+		string sesion_id FK
+		string pista_id FK
+		datetime hora_recopilacion
+		boolean revisada
+	}
 
-    HISTORIAL_DIALOGO {
-        int mensaje_id PK
-        string sesion_id FK
-        string npc_id FK
-        string rol_mensaje
-        string contenido
-        datetime timestamp
-    }
+	HISTORIAL_DIALOGO {
+		int mensaje_id PK
+		string sesion_id FK
+		string npc_id FK
+		string rol_mensaje
+		string contenido
+		datetime timestamp
+	}
 
-    CASO ||--o{ NPC : "tiene sospechosos"
-    CASO ||--o{ PISTA : "contiene"
-    PISTA ||--o{ PISTA_NPC : "conecta con"
-    NPC ||--o{ PISTA_NPC : "relacionada a"
-    JUGADOR ||--o{ INVENTARIO : "recopila"
-    PISTA ||--o{ INVENTARIO : "recopilada en"
-    JUGADOR ||--o{ HISTORIAL_DIALOGO : "conversa"
-    NPC ||--o{ HISTORIAL_DIALOGO : "responde"
+	CASO ||--o{ NPC : "tiene sospechosos"
+	CASO ||--o{ PISTA : "contiene"
+	PISTA ||--o{ PISTA_NPC : "conecta con"
+	NPC ||--o{ PISTA_NPC : "relacionada a"
+	JUGADOR ||--o{ INVENTARIO : "recopila"
+	PISTA ||--o{ INVENTARIO : "recopilada en"
+	JUGADOR ||--o{ HISTORIAL_DIALOGO : "conversa"
+	NPC ||--o{ HISTORIAL_DIALOGO : "responde"
 ```
 
 ### 4.7. Diagrama de Estados del Juego
 
 ```mermaid
 stateDiagram-v2
-    [*] --> MenuPrincipal
+	[*] --> MenuPrincipal
 
-    MenuPrincipal --> Briefing: Iniciar partida
+	MenuPrincipal --> Briefing: Iniciar partida
 
-    Briefing --> Exploracion: Jefe asigna el caso
-    
-    state Exploracion {
-        [*] --> NavegandoEscena
-        NavegandoEscena --> InspeccionandoObjeto: Interactuar con objeto
-        InspeccionandoObjeto --> NavegandoEscena: Soltar / guardar pista
-        NavegandoEscena --> CambiandoEscenario: Ir a otra ubicación
-        CambiandoEscenario --> NavegandoEscena: Carga completa
-    }
+	Briefing --> Exploracion: Jefe asigna el caso
+	
+	state Exploracion {
+		[*] --> NavegandoEscena
+		NavegandoEscena --> InspeccionandoObjeto: Interactuar con objeto
+		InspeccionandoObjeto --> NavegandoEscena: Soltar / guardar pista
+		NavegandoEscena --> CambiandoEscenario: Ir a otra ubicación
+		CambiandoEscenario --> NavegandoEscena: Carga completa
+	}
 
-    Exploracion --> Interrogatorio: Hablar con sospechoso
-    
-    state Interrogatorio {
-        [*] --> EsperandoPregunta
-        EsperandoPregunta --> GrabandoVoz: Presionar botón hablar
-        GrabandoVoz --> ProcesandoSTT: Soltar botón
-        ProcesandoSTT --> GenerandoRespuestaLLM: Texto recibido
-        GenerandoRespuestaLLM --> ReproduciendoTTS: Respuesta lista
-        ReproduciendoTTS --> EsperandoPregunta: Audio terminado
-    }
+	Exploracion --> Interrogatorio: Hablar con sospechoso
+	
+	state Interrogatorio {
+		[*] --> EsperandoPregunta
+		EsperandoPregunta --> GrabandoVoz: Presionar botón hablar
+		GrabandoVoz --> ProcesandoSTT: Soltar botón
+		ProcesandoSTT --> GenerandoRespuestaLLM: Texto recibido
+		GenerandoRespuestaLLM --> ReproduciendoTTS: Respuesta lista
+		ReproduciendoTTS --> EsperandoPregunta: Audio terminado
+	}
 
-    Interrogatorio --> Exploracion: Terminar interrogatorio
+	Interrogatorio --> Exploracion: Terminar interrogatorio
 
-    Exploracion --> Acusacion: Hablar con el Jefe para acusar
+	Exploracion --> Acusacion: Hablar con el Jefe para acusar
 
-    state Acusacion {
-        [*] --> PresentandoHipotesis
-        PresentandoHipotesis --> EvaluandoAcusacion: Enviar acusación
-        EvaluandoAcusacion --> ResultadoCorrecto: Acierto
-        EvaluandoAcusacion --> ResultadoIncorrecto: Fallo
-    }
+	state Acusacion {
+		[*] --> PresentandoHipotesis
+		PresentandoHipotesis --> EvaluandoAcusacion: Enviar acusación
+		EvaluandoAcusacion --> ResultadoCorrecto: Acierto
+		EvaluandoAcusacion --> ResultadoIncorrecto: Fallo
+	}
 
-    Acusacion --> CasoResuelto: Correcto
-    Acusacion --> Exploracion: Incorrecto (seguir investigando)
-    
-    CasoResuelto --> MenuPrincipal: Volver al menú
-    CasoResuelto --> [*]
+	Acusacion --> CasoResuelto: Correcto
+	Acusacion --> Exploracion: Incorrecto (seguir investigando)
+	
+	CasoResuelto --> MenuPrincipal: Volver al menú
+	CasoResuelto --> [*]
 
-    state AsistenteIngles {
-        [*] --> Inactivo
-        Inactivo --> Activo: Invocar asistente
-        Activo --> Inactivo: Cerrar asistente
-    }
+	state AsistenteIngles {
+		[*] --> Inactivo
+		Inactivo --> Activo: Invocar asistente
+		Activo --> Inactivo: Cerrar asistente
+	}
 
-    note right of AsistenteIngles: Disponible en cualquier momento
+	note right of AsistenteIngles: Disponible en cualquier momento
 ```
 
 ### 4.8. Mockups de Vistas Principales
