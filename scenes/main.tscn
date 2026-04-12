@@ -21,7 +21,7 @@ radius = 2.0
 script = ExtResource("1_main")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=787377734]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 5, 0)
+transform = Transform3D(0.7071068, -0.49999994, 0.5000001, 0, 0.70710695, 0.7071067, -0.7071068, -0.49999994, 0.5000001, -5.586873, 2.590349, -5.0997906)
 light_energy = 1.2
 shadow_enabled = true
 
@@ -29,6 +29,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=506238296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24156241, 0)
 mesh = SubResource("BoxMesh_floor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=878287988]
@@ -39,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9932015, 0)
 script = ExtResource("2_loco")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1198717627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33787274, 0)
 
 [node name="LeftHand" type="XRController3D" parent="XROrigin3D" unique_id=1462205398]
 tracker = &"left_hand"
@@ -62,6 +64,7 @@ npc_id = "sofia_ramos"
 display_name = "Sofía Ramos (PoC)"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NPC_Prueba" unique_id=409485176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23229146, 0)
 mesh = SubResource("BoxMesh_npc")
 
 [node name="ProximityArea" type="Area3D" parent="NPC_Prueba" unique_id=1759087867]

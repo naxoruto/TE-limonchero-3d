@@ -95,10 +95,33 @@ func _play_npc_audio(audio_bytes: PackedByteArray) -> void:
 	if not _npc_audio_player:
 		push_warning("[VoiceManager] No hay AudioStreamPlayer3D asignado al NPC.")
 		return
-	npc_speaking_started.emit()
-	# Crear un AudioStreamWAV desde los bytes crudos
+	if audio_bytes.is_empty():
+		push_warning("[VoiceManager] audio_bytes está vacío, nada que reproducir.")
+		return
+
+	# Parsear el header WAV para configurar el stream correctamente.
+	# El servidor (Piper TTS) devuelve WAV estándar de 16-bit PCM.
+	# Estructura del header WAV: https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html
+	# Bytes 22-23 → número de canales (1=mono, 2=stereo)
+	# Bytes 24-27 → sample rate (ej: 22050)
+	# Bytes 34-35 → bits por sample (ej: 16)
+	# Bytes 44+   → datos PCM crudos
+	if audio_bytes.size() < 44:
+		push_error("[VoiceManager] Datos WAV demasiado cortos para contener un header válido.")
+		return
+
+	var num_channels: int = audio_bytes.decode_u16(22)
+	var sample_rate: int  = audio_bytes.decode_u32(24)
+	# Los datos PCM empiezan en el byte 44 (header estándar sin chunks extra)
+	var pcm_data: PackedByteArray = audio_bytes.slice(44)
+
 	var stream := AudioStreamWAV.new()
-	# TODO: Parsear los bytes WAV del servidor correctamente
+	stream.format   = AudioStreamWAV.FORMAT_16_BITS
+	stream.mix_rate = sample_rate
+	stream.stereo   = (num_channels == 2)
+	stream.data     = pcm_data
+
+	npc_speaking_started.emit()
 	_npc_audio_player.stream = stream
 	_npc_audio_player.play()
 	await _npc_audio_player.finished
