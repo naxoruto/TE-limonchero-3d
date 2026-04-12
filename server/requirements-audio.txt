@@ -1,0 +1,6 @@
+faster-whisper
+piper-tts
+sounddevice
+soundfile
+numpy
+httpx
