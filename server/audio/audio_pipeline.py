@@ -203,7 +203,7 @@ class AudioPipeline:
                     continue
                     
                 reply = self.chat_llm(text)
-                self.speak(reply)
+                # self.speak(reply)  # TTS desactivado, solo texto
                 
                 print("\n" + "─"*56)
             except KeyboardInterrupt:
