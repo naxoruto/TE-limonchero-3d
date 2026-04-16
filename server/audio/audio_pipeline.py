@@ -8,6 +8,8 @@ import subprocess
 import sys
 import threading
 import time
+import termios
+import tty
 
 import httpx
 import numpy as np
@@ -58,13 +60,8 @@ class AudioPipeline:
         ]
 
         print(f"[*] Cargando modelo STT (faster-whisper '{WHISPER_MODEL}')...")
-        try:
-            self.whisper_model = WhisperModel(WHISPER_MODEL, device="cuda", compute_type="float16")
-            self.compute_device = "CUDA"
-        except Exception as e:
-            print(f"[!] Falló CUDA ({e}), haciendo fallback a CPU...")
-            self.whisper_model = WhisperModel(WHISPER_MODEL, device="cpu", compute_type="int8")
-            self.compute_device = "CPU"
+        self.whisper_model = WhisperModel(WHISPER_MODEL, device="cpu", compute_type="int8")
+        self.compute_device = "CPU"
 
         os.makedirs(PIPER_DATA_DIR, exist_ok=True)
         self.temp_wav_in = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp_record.wav")
@@ -73,12 +70,26 @@ class AudioPipeline:
         self.recording = False
         self.recorded_frames = []
 
+    def _wait_for_space(self):
+        fd = sys.stdin.fileno()
+        old = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            while True:
+                ch = sys.stdin.read(1)
+                if ch == ' ':
+                    break
+                if ch in ('\x03', '\x04'):  # Ctrl+C / Ctrl+D
+                    raise KeyboardInterrupt
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
     def record_audio(self):
-        print("\n> Presiona ENTER para empezar a hablar...")
-        input()
+        print("\n> Presiona ESPACIO para empezar a hablar...")
+        self._wait_for_space()
         self.recording = True
         self.recorded_frames = []
-        
+
         def callback(indata, frames, time_info, status):
             if status:
                 print(status, file=sys.stderr)
@@ -87,8 +98,8 @@ class AudioPipeline:
 
         stream = sd.InputStream(samplerate=SAMPLE_RATE, channels=CHANNELS, callback=callback, dtype='float32')
         with stream:
-            print("🎙️ Grabando... (Presiona ENTER para detener)")
-            input()
+            print("🎙️ Grabando... (Presiona ESPACIO para detener)")
+            self._wait_for_space()
             self.recording = False
             
         print("🎙️ Grabación finalizada...")
@@ -126,7 +137,7 @@ class AudioPipeline:
         
         print(f"⏳ Enviando al LLM (Ollama → {OLLAMA_MODEL})...")
         try:
-            with httpx.Client(timeout=60) as client:
+            with httpx.Client(timeout=180) as client:
                 resp = client.post(OLLAMA_URL, json=payload)
                 resp.raise_for_status()
                 data = resp.json()
