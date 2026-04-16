@@ -16,9 +16,9 @@ Desarrollar un prototipo funcional de un videojuego de detectives en Realidad Vi
 
 ### 1.2. Objetivos Específicos
 1. **Diseñar e implementar un entorno 3D inmersivo** con ambientación noir en Godot 4, optimizado para Meta Quest 2, que permita al jugador explorar escenarios e interactuar con objetos y pistas.
-2. **Integrar un sistema de Speech-to-Text (STT) y Text-to-Speech (TTS)** que permita la comunicación oral exclusiva en inglés entre el jugador (Limonchero) y los NPCs.
+2. **Integrar un sistema de Speech-to-Text (STT)** que permita la comunicación oral en inglés del jugador (Limonchero) hacia los NPCs, cuyas respuestas se mostrarán exclusivamente como texto en pantalla (sin síntesis de voz).
 3. **Desarrollar un chatbot conversacional basado en LLM** con prompts especializados para cada NPC, dotándolos de personalidad, información y comportamiento únicos en inglés para los interrogatorios.
-4. **Implementar un asistente corrector basado en LLM** (Félix "El Viejo" Durán) que evalúe la entrada de voz en inglés del jugador (STT) y ofrezca retroalimentación lingüística e indicaciones en español sobre cómo mejorar su gramática y pronunciación de forma irónica.
+4. **Implementar un asistente LLM** (Limoncito) que apoye al jugador en español: sugiera cómo formular preguntas antes de acercarse a un NPC, aclare respuestas de los NPCs, y corrija errores gramaticales en inglés de forma constructiva cuando el jugador los cometa.
 5. **Evaluar la usabilidad, inmersión y aceptación del prototipo** mediante pruebas con usuarios reales, utilizando instrumentos validados (SUS, IMI, TAM) y cuestionarios pre/post experiencia.
 
 ---
@@ -52,7 +52,7 @@ Se utilizará una adaptación de la metodología ágil **Scrum**, ajustada a un 
 |------------|-----|------------------------------|
 | Ignacio Cuevas | Líder técnico + VR | Configuración Godot 4 + OpenXR, locomoción, interacciones VR, export Quest 2 |
 | Martin Cevallos | Backend + LLM | Servidor local (Python/FastAPI), integración Ollama/API LLM, prompts NPCs |
-| Sofia Meza | Audio + STT/TTS | Pipeline de voz: Whisper (STT), Piper/ElevenLabs (TTS), integración Godot |
+| Sofia Meza | Audio + STT | Pipeline de voz: Whisper (STT), integración Godot |
 | Diego Espinosa | Diseño + Documentación | Modelado 3D/assets, UI/UX VR, informes, diagramas, presentaciones |
 
 ---
@@ -79,7 +79,7 @@ Se utilizará una adaptación de la metodología ágil **Scrum**, ajustada a un 
 │   └── 1.2.7. Prototipo básico funcional (PoC)
 │       ├── 1.2.7.1. Setup Godot 4 + OpenXR + XR Tools
 │       ├── 1.2.7.2. Escena VR mínima con 1 NPC
-│       ├── 1.2.7.3. Pipeline STT → LLM → TTS funcional
+│       ├── 1.2.7.3. Pipeline STT → LLM → Texto funcional
 │       ├── 1.2.7.4. Demostración en Quest 2
 │
 ├── 1.3. DESARROLLO CORE (Entrega 2 — 70%)
@@ -97,7 +97,7 @@ Se utilizará una adaptación de la metodología ágil **Scrum**, ajustada a un 
 │   │   └── 1.3.3.3. Asistente LLM en español evaluador de gramática inglesa
 │   ├── 1.3.4. Sistema de audio
 │   │   ├── 1.3.4.1. Captura y envío de audio (STT)
-│   │   ├── 1.3.4.2. Síntesis de voz (TTS) por NPC
+│   │   ├── 1.3.4.2. Visualización de respuesta NPC en panel world-space
 │   │   └── 1.3.4.3. Música y SFX ambientales
 │   └── 1.3.5. Diseño de pruebas con usuarios
 │       ├── 1.3.5.1. Definición de escenarios de prueba
@@ -131,12 +131,12 @@ Se utilizará una adaptación de la metodología ágil **Scrum**, ajustada a un 
 | **Diseño** | Diagramas UML | Casos de uso, secuencia, ER, estados | Int. 4 | S1 |
 | **Diseño** | Mockups VR | Imágenes/sketches | Int. 4 | S1 |
 | **Diseño** | Setup Godot 4 + OpenXR | Proyecto Godot configurado | Int. 1 | S1 |
-| **Diseño** | PoC: STT→LLM→TTS | Pipeline funcional | Int. 2, 3 | S1 |
+| **Diseño** | PoC: STT→LLM→Texto | Pipeline funcional | Int. 2, 3 | S1 |
 | **Diseño** | PoC: Escena VR + NPC | Demo en Quest 2 | Todos | S1 |
 | **Dev Core** | Entorno 3D (oficina, crimen, interrog.) | 3 escenas Godot | Int. 1, 4 | S2-S5 |
 | **Dev Core** | Locomoción + interacciones | Mecánicas VR | Int. 1 | S2-S3 |
 | **Dev Core** | 3-4 NPCs con prompts | Sistema NPC | Int. 2 | S3-S5 |
-| **Dev Core** | STT + TTS en juego | Audio pipeline | Int. 3 | S2-S4 |
+| **Dev Core** | STT en juego | Audio pipeline (captura y transcripción) | Int. 3 | S2-S4 |
 | **Dev Core** | Flujo completo de juego | Gameplay loop | Todos | S5-S6 |
 | **Dev Core** | Asistente de inglés | Chatbot auxiliar | Int. 2 | S5-S6 |
 | **Dev Core** | Diseño pruebas usuarios | Protocolo + cuestionarios | Int. 4 | S6-S7 |
@@ -172,7 +172,7 @@ DESARROLLO
 Entorno 3D              ████████████████████████
 Locomoción VR           ████████
 NPCs + LLM                      ████████████████
-Audio STT+TTS           ████████████████
+Audio STT               ████████████████
 Gameplay loop                           ████████
 Asist. inglés                           ████████
 Diseño pruebas                                  ████████
@@ -199,23 +199,23 @@ Defensa E3                                                                      
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                    DETECTIVE NOIR VR                             │
+│              DETECTIVE NOIR VR — "El Agave y La Luna"            │
 │                                                                  │
 │  ┌─────────────┐    ┌──────────────┐    ┌────────────────────┐  │
-│  │  OFICINA    │    │   ESCENA     │    │      SALA DE       │  │
-│  │  DEL        │───►│   DEL        │───►│   INTERROGATORIO   │  │
-│  │  DETECTIVE  │    │   CRIMEN     │    │                    │  │
-│  │             │    │              │    │  ┌──┐ ┌──┐ ┌──┐   │  │
-│  │ [Jefe NPC]  │    │ [Pista 1-5+] │    │  │S1│ │S2│ │S3│   │  │
-│  │ [Tablón]    │    │ [Ambiente]   │    │  └──┘ └──┘ └──┘   │  │
+│  │  VESTÍBULO  │    │  SALÓN /     │    │  SALA DE           │  │
+│  │  / ENTRADA  │───►│  ESCENA DEL  │───►│  INTERROGATORIO    │  │
+│  │             │    │  CRIMEN      │    │                    │  │
+│  │[Commissioner│    │ [Pista 1-5+] │    │ ┌──┐┌──┐┌──┐┌──┐  │  │
+│  │   Beet]     │    │ [Limoncito]  │    │ │S1││S2││S3││S4│  │  │
+│  │             │    │ [Ambiente]   │    │ └──┘└──┘└──┘└──┘  │  │
 │  └─────────────┘    └──────────────┘    └────────────────────┘  │
 │         │                                         │              │
 │         └──────────── ACUSACIÓN ◄─────────────────┘              │
 │                                                                  │
 │  ┌──────────────────────────────────────────────────────────┐   │
 │  │                CAPA DE INTELIGENCIA ARTIFICIAL            │   │
-│  │  Micrófono → STT (Whisper) → LLM (Ollama) → TTS (Piper) │   │
-│  │              + Asistente de aprendizaje de inglés         │   │
+│  │  Micrófono → STT (Whisper) → LLM (Ollama) → Texto (panel)│   │
+│  │              + Limoncito (asistente en español)           │   │
 │  └──────────────────────────────────────────────────────────┘   │
 │                                                                  │
 │  ┌──────────────────────────────────────────────────────────┐   │
@@ -238,7 +238,7 @@ Defensa E3                                                                      
 | RF-07 | El sistema evalúa si la acusación es correcta y muestra un desenlace apropiado (éxito/fracaso) | Alta |
 | RF-08 | El jugador dispone de un inventario visual en VR para revisar las pistas recopiladas | Media |
 | RF-09 | Se muestran subtítulos en un panel world-space con el diálogo (lo que dice el jugador y el NPC) | Media |
-| RF-10 | El asistente evaluador (Félix "El Viejo") analiza el input en inglés del jugador (STT) de forma automática y ofrece correcciones en español si se detectan errores gramaticales o de vocabulario | Alta |
+| RF-10 | El asistente Limoncito analiza el input del jugador (STT) de forma automática y ofrece correcciones en español si se detectan errores gramaticales; también puede sugerir preguntas y aclarar respuestas de los NPCs | Alta |
 | RF-11 | El jugador puede navegar entre los distintos escenarios (oficina, escena del crimen, interrogatorio) | Alta |
 | RF-12 | El sistema conserva el historial de conversación con cada NPC durante la partida | Media |
 
@@ -247,7 +247,7 @@ Defensa E3                                                                      
 | ID | Requisito | Métrica objetivo |
 |----|-----------|-----------------|
 | RNF-01 | El juego debe mantener un framerate estable en Quest 2 | ≥ 72 FPS |
-| RNF-02 | La latencia total del pipeline de voz (STT + LLM + TTS) debe ser aceptable | < 5 segundos |
+| RNF-02 | La latencia total del pipeline de voz (STT + LLM) hasta mostrar texto debe ser aceptable | < 5 segundos |
 | RNF-03 | El sistema STT debe reconocer **inglés** hablado con precisión aceptable, incluso con acento latino | > 85% accuracy |
 | RNF-04 | El juego se comunica con el servidor local vía WiFi (misma red) | Latencia red < 50ms |
 | RNF-05 | La experiencia VR no debe inducir mareos (motion sickness) | Evaluación cualitativa |
@@ -257,6 +257,8 @@ Defensa E3                                                                      
 
 ### 4.4. Diagrama de Casos de Uso
 
+> **Nota:** Mermaid no soporta diagramas de casos de uso UML nativamente. Se usa `graph LR` con etiquetas `<<include>>` y `<<extend>>` para aproximar la notación UML estándar.
+
 ```mermaid
 graph LR
 	subgraph Sistema["Detective Noir VR"]
@@ -264,33 +266,39 @@ graph LR
 		UC2["Recoger pista"]
 		UC3["Revisar inventario de pistas"]
 		UC4["Interrogar sospechoso por voz"]
-		UC5["Acusar sospechoso ante el jefe"]
-		UC6["Recibir briefing del jefe"]
-		UC7["Consultar asistente de inglés"]
+		UC5["Acusar sospechoso ante Commissioner Beet"]
+		UC6["Recibir briefing del Commissioner Beet ⚑ precondición"]
+		UC7["Limoncito: evaluar inglés y apoyar investigación (automático)"]
 		UC8["Navegar entre escenarios"]
 	end
 
 	Jugador((Jugador / Detective))
-	LLM((Servicio LLM))
+	LLM_NPC(("Servicio LLM\n(NPCs)"))
+	LLM_Limoncito(("Servicio LLM\n(Limoncito / Asistente)"))
 	STT((Servicio STT))
-	TTS((Servicio TTS))
-
+	%% Relaciones jugador → UC
+	Jugador --> UC6
+	Jugador --> UC8
 	Jugador --> UC1
 	Jugador --> UC2
 	Jugador --> UC3
 	Jugador --> UC4
 	Jugador --> UC5
-	Jugador --> UC6
-	Jugador --> UC7
-	Jugador --> UC8
 
+	%% include: dependencias obligatorias entre UCs
+	UC2 -. "<<include>>" .-> UC1
+	UC4 -. "<<include>>" .-> UC8
+	UC5 -. "<<include>>" .-> UC6
+
+	%% extend: UC7 se activa automáticamente durante UC4
+	UC7 -. "<<extend>>" .-> UC4
+
+	%% Servicios externos
 	UC4 --> STT
-	UC4 --> LLM
-	UC4 --> TTS
-	UC5 --> LLM
-	UC6 --> LLM
-	UC6 --> TTS
-	UC7 --> LLM
+	UC4 --> LLM_NPC
+	UC7 --> LLM_Limoncito
+	UC5 --> LLM_NPC
+	UC6 --> LLM_NPC
 ```
 
 ### 4.5. Diagramas de Secuencia
@@ -304,7 +312,6 @@ sequenceDiagram
 	participant B as Backend (FastAPI)
 	participant W as Whisper (STT)
 	participant L as Ollama (LLM)
-	participant P as Piper (TTS)
 
 	J->>U: Presiona botón para hablar
 	U->>U: Activa micrófono, graba audio
@@ -316,11 +323,11 @@ sequenceDiagram
 	B->>L: POST /generate {system_prompt + historial}
 	L-->>B: "Estuve en casa toda la noche, no sé de qué me hablas..."
 	B-->>U: {texto_respuesta}
-	U->>U: Mostrar texto del NPC en panel world-space (subtítulos)
-	B->>L: Evaluar inglés del jugador (LLM Asistente Félix)
+	U->>U: Mostrar texto del NPC en panel world-space
+	B->>L: Evaluar inglés del jugador (LLM Asistente Limoncito)
 	L-->>B: {hay_error: bool, correccion: "..."}
 	B-->>U: corrección si aplica
-	U->>J: Félix muestra corrección en español (si hubo error)
+	U->>J: Limoncito muestra corrección en español como texto (si hubo error)
 ```
 
 #### 4.5.2. Caso de Uso: Recoger Pista
@@ -350,7 +357,7 @@ sequenceDiagram
 	participant B as Backend
 	participant L as LLM
 
-	J->>U: Se acerca al Jefe NPC
+	J->>U: Se acerca al Commissioner Beet
 	U->>U: Activar modo acusación
 	J->>U: Habla: "Creo que el culpable es [Sospechoso X] porque..."
 	U->>B: POST /transcribe {audio}
@@ -461,8 +468,8 @@ stateDiagram-v2
 		EsperandoPregunta --> GrabandoVoz: Presionar botón hablar
 		GrabandoVoz --> ProcesandoSTT: Soltar botón
 		ProcesandoSTT --> GenerandoRespuestaLLM: Texto recibido
-		GenerandoRespuestaLLM --> ReproduciendoTTS: Respuesta lista
-		ReproduciendoTTS --> EsperandoPregunta: Audio terminado
+		GenerandoRespuestaLLM --> MostrandoTextoNPC: Respuesta lista
+		MostrandoTextoNPC --> EsperandoPregunta: Texto mostrado en panel
 	}
 
 	Interrogatorio --> Exploracion: Terminar interrogatorio
@@ -506,7 +513,7 @@ stateDiagram-v2
 ## 5. Prototipo Básico Funcional (Prueba de Concepto)
 
 ### 5.1. Caso de Uso Demostrado
-**CU-04: Interrogar sospechoso por voz** — Es el caso de uso más representativo porque demuestra la integración de las tres tecnologías clave: VR + LLM + STT/TTS.
+**CU-04: Interrogar sospechoso por voz** — Es el caso de uso más representativo porque demuestra la integración de las tecnologías clave: VR + STT + LLM con respuesta en texto.
 
 ### 5.2. Descripción del Prototipo
 Una escena minimalista en Godot con:
@@ -523,18 +530,18 @@ Una escena minimalista en Godot con:
 | Backend | Python + FastAPI (corriendo en PC local) |
 | LLM | Ollama con llama3 o mistral |
 | STT | faster-whisper (modelo medium) |
-| TTS | Piper TTS (voces en_US para NPCs, es_US/es_ES para asistente) |
+| Respuesta NPC | Texto mostrado en panel world-space (sin síntesis de voz) |
 | Comunicación | HTTP REST (Quest 2 ↔ PC vía WiFi) |
 
 ### 5.4. Pasos para reproducir el prototipo
 
 ```
 1. PC: Instalar Ollama → ollama pull llama3
-2. PC: Instalar Python → pip install fastapi uvicorn faster-whisper piper-tts
+2. PC: Instalar Python → pip install fastapi uvicorn faster-whisper
 3. PC: Ejecutar servidor → uvicorn server:app --host 0.0.0.0 --port 8000
 4. Godot: Crear proyecto con OpenXR + plugin XR Tools instalado
 5. Godot: Crear escena con XROrigin3D, 1 NPC, botón de hablar
-6. Godot: Script GDScript que graba audio, envía HTTP al servidor, reproduce respuesta
+6. Godot: Script GDScript que graba audio, envía HTTP al servidor, muestra respuesta en panel world-space
 7. Build APK para Quest 2 → instalar vía SideQuest/adb
 8. Conectar Quest 2 a la misma red WiFi que el PC
 9. Probar: hablar al NPC en inglés y recibir respuesta
@@ -560,7 +567,7 @@ El prototipo básico funcional (sección 5) sirve para verificar que la combinac
 - **VR + Godot 4 + Quest 2:** Godot 4 soporta OpenXR de forma nativa, permitiendo despliegue en Meta Quest 2 mediante exportación Android. El plugin XR Tools provee locomoción, manos y utilidades VR listas para usar.
 - **LLM local (Ollama):** Permite ejecutar modelos como llama3 sin costo y sin internet. La latencia con GPU NVIDIA es ~1-2 segundos.
 - **STT (Whisper):** El modelo `medium` de Whisper soporta inglés de forma excelente y corre en GPU local.
-- **TTS (Piper):** Ligero, offline, soporta cambio de voces entre en_US (NPCs) y es_US (Duran). Genera audio en < 1 segundo.
+- **Respuesta NPC (texto):** Las respuestas del LLM se muestran directamente en un panel world-space en Godot, sin síntesis de voz. Esto simplifica el pipeline y elimina latencia adicional.
 - **Arquitectura cliente-servidor local:** Práctica estándar en desarrollo VR. El Quest 2 se comunica por WiFi con el PC en la misma red.
 
 La combinación es **coherente con los objetivos** del proyecto: crear una experiencia inmersiva que use IA generativa para interacción natural con NPCs, dentro de un contexto de entretenimiento educativo.
