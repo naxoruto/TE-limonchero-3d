@@ -16,7 +16,7 @@
 | 4. Color System | Pendiente |
 | 5. Character Design Direction | **Completa** |
 | 6. Environment Design Language | Pendiente |
-| 7. UI/HUD Visual Direction | Pendiente |
+| 7. UI/HUD Visual Direction | **Completa** |
 | 8. Asset Standards | Pendiente |
 | 9. Reference Direction | Pendiente |
 
@@ -50,7 +50,7 @@
 
 ### 5.0 Principio Rector
 
-En Limonchero 3D, cada personaje es una fruta con un crimen que esconder o un secreto que proteger. El diseño visual debe hacer dos cosas simultáneamente: comunicar el **arquetipo de rol** (quién es esta persona en la jerarquía del caso) y la **naturaleza frutal** (qué implica ser un plátano, una mandarina, un betabel). Cuando ambas lecturas coinciden en una silueta, el artista ha hecho su trabajo.
+En Limonchero 3D, cada personaje es una fruta con un crimen que esconder o un secreto que proteger. El diseño visual debe hacer dos cosas simultáneamente: comunicar el **arquetipo de rol** (quién es esta persona en la jerarquía del caso) y la **naturaleza frutal** (qué implica ser un plátano, una granada, un betabel). Cuando ambas lecturas coinciden en una silueta, el artista ha hecho su trabajo.
 
 La estética low-poly no es una limitación de presupuesto — es el idioma visual del juego. Las caras angulares no suavizan, exageran. Un personaje preocupado no frunce el ceño gradualmente: sus planos faciales se reorganizan en ángulos más agresivos. Trabaja con la geometría, no contra ella.
 
@@ -65,8 +65,8 @@ Un jugador de VR debe identificar el rol narrativo de un personaje **a 3 metros 
 | Arquetipo | Perfil de Silueta | Característica Dominante | Qué NUNCA hacer |
 |---|---|---|---|
 | Protagonista (Limonchero) | Vertical, capas superpuestas (fedora + gabardina) | La gabardina ensancha los hombros; la fedora alarga la vertical | Silueta compacta o sin sombrero |
-| Asistente (Limoncito) | Vertical delgado, sin capas pesadas | Más pequeño que el protagonista, energía hacia arriba | Hacerlo igual de alto o más ancho |
-| Autoridad (Beet) | Horizontal, bloque macizo | Hombros anchos, cuello corto, poca vertical | Silueta esbelta o elegante |
+| Asistente (Gajito) | Vertical delgado, sin capas pesadas | Más pequeño que el protagonista, energía hacia arriba | Hacerlo igual de alto o más ancho |
+| Autoridad (Spud) | Horizontal, bloque macizo | Hombros anchos, cuello corto, poca vertical | Silueta esbelta o elegante |
 | Culpable (Barry) | Limpio, contenido, sin elementos que rompan el contorno | Traje que no cuelga ni se mueve — sin asperezas | Silueta caótica, ropa arrugada |
 | Sospechosos inocentes | Variable por personaje, pero con un **elemento disruptivo** visible | Un fedora torcido, un vestido de vuelo, una postura encorvada | Siluetas genéricas intercambiables entre sí |
 
@@ -76,12 +76,12 @@ La altura comunica poder e importancia narrativa de forma inmediata en VR. Mant�
 
 ```
 Gerry Broccolini     ████████████  125%  (el más alto — presencia física intimidante)
-Commissioner Beet    ███████████   115%  (macizo, casi igual de alto que Gerry)
+Commissioner Spud    ███████████   115%  (macizo, casi igual de alto que Gerry)
 Barry Peel           ██████████    105%  (porte impecable, muy cerca de la referencia)
 Limonchero           █████████     100%  (referencia base)
 Lola Persimmon       ████████       90%  (adulta, compacta, sin carácter intimidante)
-Vivi Tangerine       ███████        85%  (estatura escénica, no amenazante)
-Limoncito            ██████         75%  (el más bajo — subraya su inmadurez)
+Moni Graná Fert      ███████        85%  (estatura escénica + corona dentada sumando vertical)
+Gajito            ██████         75%  (el más bajo — subraya su inmadurez)
 ```
 
 Regla: ningún NPC secundario puede coincidir en altura con Barry Peel dentro de ±5% de la altura total del modelo. Barry debe mantenerse visualmente separado del resto a nivel de escala.
@@ -105,13 +105,13 @@ Esta proporción es el **nivel 0**. Las variaciones son delta sobre este baselin
 
 #### 5.2.2 Modificadores de Proporción por Arquetipo
 
-**Asistente (Limoncito) — cabeza grande, cuerpo comprimido**
+**Asistente (Gajito) — cabeza grande, cuerpo comprimido**
 - Cabeza: ~29% de la altura total (1/3.5 — más grande proporcionalmente que Limonchero)
 - Torso: ligeramente comprimido — menos espacio entre cabeza y cintura
 - Efecto narrativo: la cabeza grande comunica pensamiento, inmadurez física, energía mental sobre corporal
 - La cabeza de key lime es más pequeña y redondeada que la del limón — mantener esa diferencia de volumen
 
-**Autoridad (Commissioner Beet) — expansión horizontal, compresión vertical**
+**Autoridad (Commissioner Spud) — expansión horizontal, compresión vertical**
 - Cabeza: ~22% de la altura total (1/4.5 — proporcionalmente más pequeña, aplastada por el peso del cuerpo)
 - Torso: +30% de anchura respecto a Limonchero
 - Cuello: prácticamente inexistente — la cabeza descansa sobre los hombros
@@ -125,7 +125,7 @@ Esta proporción es el **nivel 0**. Las variaciones son delta sobre este baselin
 - No se compensa la reducción cartoon con ningún detalle llamativo — la contención es su señal
 
 **Sospechosos inocentes — individualizado por fruta**
-- Vivi Tangerine: cabeza ~29% (1/3.5), cuerpo en A (más ancho abajo por el vestido) — la mandarina es redonda, el diseño amplifica eso
+- Moni Graná Fert: cabeza ~28% (1/3.6) incluyendo la corona dentada, cuerpo en A (más ancho abajo por el vestido granate) — la granada es globosa y coronada, el diseño amplifica eso
 - Gerry Broccolini: cabeza ~20% (1/5, pequeña en relación al cuerpo enorme) — la copa arbórea del brócoli tiene masa en la parte superior; invertirlo da sensación de solidez abajo y elemento cómico-amenazante arriba
 - Lola Persimmon: cabeza ~25% (1/4), cuerpo ligeramente redondeado — el caqui es oval, la proporción es media sin extremos
 
@@ -142,21 +142,22 @@ La fruta no es solo el color de piel. Es la geometría base del cuerpo, la textu
 - **Color**: `#B5C44A` para la piel base (amarillo-verdoso apagado, como limón no maduro del todo). Ver concept sheet para referencia visual aprobada
 - **Detalle específico**: el limón tiene un pequeño botón en el extremo — en el diseño, esto se traduce como una ligera protuberancia en la parte superior de la cabeza, oculta por el cabello verde pero visible desde atrás
 
-#### 5.3.2 Limoncito — Key lime (limón de pica)
+#### 5.3.2 Gajito — Key lime (limón de pica)
 
 - **Forma base**: más esférica que el limón amarillo — menos puntiaguda, más compacta
 - **Color de piel**: verde lima brillante, `#8BC34A` aprox. (claramente distinto a Limonchero en escena oscura)
 - **Tamaño relativo**: 75% de la altura de Limonchero — claramente más pequeño, pero no exageradamente
-- **Energía del diseño**: donde Limonchero tiene líneas horizontales (gabardina, ala plana del fedora), Limoncito tiene líneas verticales — ropa ajustada, postura hacia adelante, menos masa horizontal
-- **Sin fedora**: Limoncito no lleva fedora. El sombrero es un marcador de jerarquía en este mundo — solo los detectives experimentados lo llevan
+- **Energía del diseño**: donde Limonchero tiene líneas horizontales (gabardina, ala plana del fedora), Gajito tiene líneas verticales — ropa ajustada, postura hacia adelante, menos masa horizontal
+- **Sin fedora**: Gajito no lleva fedora. El sombrero es un marcador de jerarquía en este mundo — solo los detectives experimentados lo llevan
 
-#### 5.3.3 Commissioner Wallace Beet — Betabel (remolacha)
+#### 5.3.3 Commissioner Wallace Spud — Papa (patata)
 
-- **Forma base del cuerpo**: el betabel es una raíz bulbosa — panza prominente que tapa el cinturón, hombros que descienden hacia los laterales sin ángulo pronunciado
-- **Color de piel**: rojo-magenta profundo, casi vino. En escena oscura de club noir, este color lo hace visualmente "caliente" contra los fondos fríos — es el único personaje con rojo de alta saturación en la piel
-- **Detalle específico**: el betabel tiene raíces en la parte inferior. En el diseño, esto se traduce como pequeñas protuberancias en las piernas — no funcionales, puramente decorativas, anclan la identidad frutal
-- **Tallo**: corto y grueso en la parte superior del cráneo (nub visible por encima del uniforme)
-- **Uniforme**: traje de comisionado de los 50 adaptado al cuerpo redondo. Los botones de la chaqueta están bajo tensión visible — los planos de la tela se distorsionan alrededor de la panza
+- **Forma base del cuerpo**: la papa es un tubérculo ovalado e irregular — torso amorfo, asimétrico por diseño (un hombro ligeramente más alto que el otro, panza descentrada), como si la geometría del cuerpo recordara una papa cavada del suelo. Nunca perfectamente simétrico: la asimetría es su firma
+- **Color de piel**: marrón tierra `#6B4423` aprox., con variación tonal en las facetas — zonas más claras `#8A5A30` en las partes altas (hombros, frente) y más oscuras `#4A2E18` en las bajas (barbilla, bajo la panza). Cáscara mate, nunca brillante. Paleta terrosa que lo separa tonalmente de todos los demás personajes (Moni-granate, Gerry-verde, Lola-naranja, Barry-amarillo)
+- **Ojos de la papa (brotes)**: la papa tiene "ojos" — pequeñas hendiduras oscuras de donde brotan tallos. En el diseño, 3–4 ojos visibles distribuidos por el cuerpo (nunca en la cara — serían confusos con los ojos reales). Color `#2E1A0A`. Son el marcador frutal no negociable — si no se ven los ojos de la papa, no es una papa
+- **Textura de cáscara**: granular y sucia, con suave variación de valor. En low-poly se insinúa con micro-facetas de color ligeramente más oscuro, sin normal map
+- **Cabeza**: redondeada-irregular, sin tallo (la papa no tiene tallo visible). Esto lo diferencia inmediatamente de Limonchero y Gajito
+- **Uniforme**: traje de comisionado de los 50 adaptado al cuerpo amorfo. Azul oscuro `#1E2A4A`, botones dorados de latón. Los planos del uniforme se distorsionan alrededor del cuerpo irregular — los botones de la chaqueta están bajo tensión visible. El contraste marrón-azul oscuro es la lectura a distancia: "autoridad terrosa"
 
 #### 5.3.4 Barry Peel — Plátano
 
@@ -165,12 +166,13 @@ La fruta no es solo el color de piel. Es la geometría base del cuerpo, la textu
 - **Manchas**: las manchas que aparecen gradualmente son el elemento de diseño más importante de Barry. Ver sección 5.4 para el protocolo de señalización visual
 - **Traje**: el único personaje con traje formal impecable. El traje no debe tener ni una arruga geométrica — planos completamente planos. Esta impecabilidad geométrica es parte de su carácter
 
-#### 5.3.5 Vivi Tangerine — Mandarina
+#### 5.3.5 Moni Graná Fert — Granada
 
-- **Forma base del cuerpo**: la mandarina tiene segmentos. El cuerpo de Vivi tiene una ligera segmentación visual — no literal, pero los planos del torso recuerdan los gajos. Esto se logra con variación sutil de valor en la textura (franjas de saturación ligeramente diferente)
-- **Color de piel**: naranja cálido, `#F4A340` aprox. En escena de club con iluminación de neón, este naranja captura la luz diferente al amarillo de Barry — úsalo para que brillen de forma distinta
-- **Forma de la cabeza**: más esférica y achatada que Limonchero — la mandarina es más ancha que alta. La cabeza de Vivi es casi un disco con profundidad
-- **Vestido rojo**: el único elemento rojo en un personaje femenino. El contraste naranja-rojo es fuerte — la lectura desde lejos es "fuego". Es el segundo elemento de silueta más importante después de la forma de la cabeza
+- **Forma base del cuerpo**: la granada es globosa y coronada. El cuerpo de Moni tiene una silueta redondeada en el torso que se extiende hacia arriba en una **corona dentada de 5–6 puntas** (los sépalos secos de la granada) que reemplaza la función del cabello. La corona es el elemento no negociable — es su firma de silueta desde 3 metros
+- **Color de piel**: rojo granada profundo, `#8B2332` aprox. Cáscara mate con facetas más oscuras en las zonas de sombra. En escena de club con iluminación de neón, este rojo se lee como contundente — es el único personaje con rojo saturado en la piel (Spud es marrón tierra, Lola naranja apagado). Solo compite con su propio vestido granate, que es intencional: Moni se lee como una sola masa roja a distancia
+- **Detalle de las semillas**: en zonas del torso y los brazos, pequeñas facetas rubí `#C8102E` asoman entre grietas de la cáscara — no muchas, ~6 a 8 puntos visibles por vista. Son el segundo marcador frutal después de la corona. En low-poly: mini-polígonos saturados embebidos en planos de cáscara
+- **Forma de la cabeza**: más redonda y coronada que cualquier otro personaje — la granada es vertical. La cabeza de Moni es casi esférica con la corona dentada arriba, lo que la hace leer claramente distinta de la silueta de Lola (caqui) aunque ambas tengan coronas
+- **Vestido granate**: el único vestido largo femenino de la cast. Corte bajo en el escote, caída angular larga. Color `#A0202F` — cercano a la piel pero más saturado y vivo, para que la figura se lea como "una sola masa roja" a distancia y el detalle del vestido solo aparezca de cerca. Es la lectura "Femme Fatale" desde el primer frame
 
 #### 5.3.6 Gerald Broccolini — Brócoli
 
@@ -182,7 +184,7 @@ La fruta no es solo el color de piel. Es la geometría base del cuerpo, la textu
 #### 5.3.7 Lola Persimmon — Caqui
 
 - **Forma base del cuerpo**: el caqui es una fruta oval con una corona en la parte superior. Lola tiene una ligera estructura de corona en el pelo — accesorio en forma de estrella de 4 puntas (los sépalos del caqui)
-- **Color de piel**: naranja-marrón cálido, `#D4713A` aprox. — más marrón y apagado que Vivi. La diferencia de saturación los separa claramente en escena
+- **Color de piel**: naranja-marrón cálido, `#D4713A` aprox. — cálido y terroso, separado del rojo profundo de Moni por tono (naranja vs. rojo) y de la corona de Moni por el accesorio (estrella plana de caqui vs. corona dentada tridimensional)
 - **Ropa**: traje de contadora de los 50 — blusa blanca, chaqueta estructurada, falda a la rodilla. Sin elementos llamativos. Es la única personaje con ropa completamente neutra
 
 ---
@@ -220,7 +222,7 @@ Cada sospechoso inocente tiene un elemento visual que el jugador puede malinterp
 
 | Personaje | Señal Visual Ambigua | Lectura Inocente | Lectura Culpable (falsa) |
 |---|---|---|---|
-| Vivi Tangerine | Maleta pequeña visible bajo la barra | Equipaje del club | Preparándose para huir |
+| Moni Graná Fert | Maleta pequeña visible bajo la barra | Equipaje del club | Preparándose para huir |
 | Gerry Broccolini | Fedora especialmente ladeado, manos en los bolsillos | Postura de descanso | Ocultando algo en los bolsillos |
 | Lola Persimmon | Dedos manchados de tinta | Trabajo con documentos | Huellas, tintas de falsificación |
 
@@ -262,9 +264,9 @@ No todos los personajes tienen el mismo rango expresivo. Esto es intencional y d
 
 | Personaje | Rango Expresivo | Justificación Narrativa |
 |---|---|---|
-| Limoncito | Alto — cejas móviles, boca activa | Su nerviosismo requiere que el rostro traicione lo que siente |
-| Commissioner Beet | Medio-alto — ceño prominente, boca tensa | La impaciencia se lee en cada plano facial |
-| Vivi Tangerine | Bajo-medio — sonrisa fija, ojos casi inmóviles | La gentileza controlada es una máscara; su cara casi no cambia |
+| Gajito | Alto — cejas móviles, boca activa | Su nerviosismo requiere que el rostro traicione lo que siente |
+| Commissioner Spud | Medio-alto — ceño prominente, boca tensa | La impaciencia se lee en cada plano facial |
+| Moni Graná Fert | Bajo-medio — sonrisa lenta calculada, ojos en media apertura constante | La femme fatale controla cada gesto; la calma es el arma |
 | Lola Persimmon | Medio — animada pero no extrema | La cooperación excesiva se lee en rapidez del gesto, no en exageración |
 | Gerry Broccolini | Muy bajo — casi sin expresión | Monosilábico en todo, incluyendo la cara |
 | Barry Peel | Casi nulo — microexpresiones únicamente | La serenidad absoluta como señal de alarma |
@@ -290,7 +292,7 @@ Muchas frutas tienen tallo. El tallo en la cabeza rompe cualquier sombrero conve
 
 **Solución A — Ranura Dorsal** (para sombreros sólidos como el fedora): la copa tiene una ranura en la parte posterior que permite al tallo salir sin deformar el sombrero. La ranura es parte del diseño, no un arreglo — es un detalle de moda noir-frutícola. Limonchero usa esta solución (verificable en el concept sheet: el cabello verde sale por la parte trasera del fedora).
 
-**Solución B — Corona Abierta** (para gorras y tocados): sombreros con corona abierta o ajustable. Funciona para personajes con tallo corto como Beet.
+**Solución B — Corona Abierta** (para gorras y tocados): sombreros con corona abierta o ajustable. Funciona para personajes con cabeza redondeada irregular como Spud.
 
 **Solución C — Sin Sombrero**: para personajes cuya masa superior hace imposible cualquier sombrero convencional. El fedora de Gerry es humorístico precisamente porque no puede resolverse bien — se hunde en la copa arbórea.
 
@@ -317,16 +319,16 @@ Las manos de fruta son masas geométricas, no dedos individuales.
 - Cinturón como strip geométrico recto, nudo solo insinuado
 - Preparar dos variantes: cuello levantado (pose noir) y cuello plano
 
-**Vestido de Vivi (rojo)**:
-- Cuerpo ajustado arriba, falda en vuelo angular — serie de planos, no tela continua
-- El rojo del vestido es el punto de mayor saturación de toda la cast. No añadir detalles de color adicionales que compitan
+**Vestido de Moni (granate)**:
+- Cuerpo ajustado arriba con corte bajo, falda larga en vuelo angular — serie de planos, no tela continua
+- El granate `#A0202F` del vestido es el punto de mayor saturación de toda la cast. Lee como una sola masa roja con la piel de granada; el detalle se revela de cerca. No añadir colores secundarios que compitan
 
 **Traje de Barry**:
 - Negro intenso, sin variación de material entre chaqueta, pantalón y chaleco
 - Pañuelo de bolsillo blanco: único punto de blanco en toda su figura — punto focal durante el interrogatorio
 - Botones: polígonos esféricos simples, 4–6 polígonos cada uno
 
-**Uniforme de Beet**:
+**Uniforme de Spud (comisionado)**:
 - Azul oscuro, hombreras geométricas
 - Galones dorados en mangas: strips de color en textura flat, no geometría separada
 - Botones frontales bajo tensión visible — los planos de la chaqueta se abren alrededor de la panza
@@ -363,10 +365,10 @@ Estos elementos se preservan hasta LOD 1. Solo pueden eliminarse en LOD 2.
 | Personaje | E1 (silueta) | E2 (color dominante) | E3 (accesorio clave) | E4 (detalle secundario) |
 |---|---|---|---|---|
 | Limonchero | Fedora + gabardina | Amarillo-verdoso | Cabello verde | Camiseta con gato |
-| Limoncito | Altura baja, cabeza grande | Verde lima brillante | Sin sombrero | Ropa ajustada |
+| Gajito | Altura baja, cabeza grande | Verde lima brillante | Sin sombrero | Ropa ajustada |
 | Barry Peel | Traje limpio, porte recto | Amarillo uniforme | Pañuelo blanco | Manchas en mano |
-| Commissioner Beet | Masa horizontal, hombros caídos | Rojo-vino | Uniforme azul oscuro | Galones dorados |
-| Vivi Tangerine | Figura en A, vuelo de vestido | Rojo del vestido | Vestido completo | Naranja de la piel |
+| Commissioner Spud | Masa amorfa asimétrica | Marrón tierra | Uniforme azul oscuro | Ojos de papa (brotes) + galones dorados |
+| Moni Graná Fert | Figura en A + corona dentada | Granate profundo | Vestido granate completo | Corona + semillas rubí asomando |
 | Gerry Broccolini | Masa arbórea superior | Verde oscuro | Fedora hundido | Manos en bolsillos |
 | Lola Persimmon | Oval compacta, postura erguida | Naranja-marrón | Traje estructurado | Corona de caqui en pelo |
 
@@ -386,9 +388,9 @@ Antes de aprobar cualquier modelo de personaje:
 
 Para mantenerse dentro del presupuesto de draw calls (<100 por frame):
 
-- **Atlas A — Asistente**: Limoncito (siempre presente junto al jugador)
-- **Atlas B — Sospechosos**: Vivi + Gerry + Lola (raramente en frame simultáneo completo)
-- **Atlas C — Autoridad y Culpable**: Beet + Barry (interacciones clave de alta calidad)
+- **Atlas A — Asistente**: Gajito (siempre presente junto al jugador)
+- **Atlas B — Sospechosos**: Moni + Gerry + Lola (raramente en frame simultáneo completo)
+- **Atlas C — Autoridad y Culpable**: Spud + Barry (interacciones clave de alta calidad)
 - **Textura de manchas de Barry**: archivo separado por su naturaleza dinámica — no incluir en atlas general
 
 ---
@@ -424,7 +426,155 @@ atlas_authority_lod0.png                    ← atlas C
 
 ## 7. UI/HUD Visual Direction
 
-> *[Pendiente — completar con /art-bible]*
+### 7.0 Principio Rector
+
+En un juego de VR en primera persona, **la pantalla no existe**. No hay HUD flotante pegado a la cámara. Toda la UI es diegética o espacial — existe dentro del mundo del juego, no encima de él. El jugador de Limonchero 3D es un detective noir: no mira menús, *investiga*.
+
+La regla de oro: **si un detective de los 50 no lo usaría, el jugador no lo ve**.
+
+---
+
+### 7.1 Filosofía de UI en VR Noir
+
+#### Tres capas de interfaz
+
+| Capa | Tipo | Ejemplos | Anclaje |
+|---|---|---|---|
+| **Diegética** | Existe en el mundo | Libreta de notas, fotografías de pistas, reloj de pared | World-space, objeto 3D |
+| **Espacial** | Flota en el mundo, no en la cámara | Subtítulos durante diálogo, indicadores de interacción | World-space, billboard |
+| **Sistema** | Menús fuera del mundo | Pausa, configuración, créditos | Screen-space, solo cuando necesario |
+
+**Regla**: los elementos de Sistema solo aparecen cuando el juego está pausado. Durante gameplay, todo es Diegético o Espacial.
+
+---
+
+### 7.2 Elementos Diegéticos
+
+#### 7.2.1 La Libreta de Notas (inventory principal)
+
+El jugador lleva una libreta física en el bolsillo de la gabardina. Al sacarla, se convierte en el hub de información.
+
+- **Material visual**: cuero marrón oscuro desgastado, `#3D2510`. Cantos con desgaste geométrico — sin suavizado
+- **Páginas internas**: papel amarillento, `#F5ECC8`. Texto en fuente monospace tipo máquina de escribir
+- **Pistas añadidas**: aparecen como fotografías en blanco y negro pegadas con cinta adhesiva, o notas manuscritas con tinta azul oscuro
+- **No hay iconos de color**: todo en escala de grises + sepia, excepto marcadores de importancia en rojo tinta `#8B1A1A`
+- **Layout de página**: columna izquierda para hechos confirmados, columna derecha para sospechas — separados por una línea vertical de tinta
+
+#### 7.2.2 Fotografías de Pistas
+
+Las pistas físicas se representan como fotografías en blanco y negro que el jugador puede sostener y examinar.
+
+- **Borde**: blanco crudo `#F0EDE0`, 4–6mm de grosor geométrico
+- **Imagen**: desaturada al 100%, con ligero viñetado en las esquinas
+- **Reverso**: texto de máquina de escribir con código de evidencia — formato `EV-[número]-[inicial de escena]`
+- **Desgaste**: esquinas ligeramente dobladas (deformación geométrica sutil, no textura)
+
+#### 7.2.3 Reloj de Pared (indicador de tiempo narrativo)
+
+En la escena del club, un reloj de pared art deco indica la presión temporal del caso.
+
+- El tiempo no es real — es narrativo. El reloj avanza en saltos cuando el jugador completa objetivos
+- **Estilo visual**: esfera crema, números romanos, agujas negras geométricas
+- Sin números digitales, sin barra de progreso
+
+---
+
+### 7.3 Elementos Espaciales
+
+#### 7.3.1 Indicadores de Interacción
+
+Cuando el jugador apunta a un objeto interactuable, aparece un indicador mínimo.
+
+- **Forma**: punto de luz `#E8D5A3` (blanco cálido), 8px equivalente en world-space
+- **Sin texto por defecto** — el objeto debe ser legible por sí mismo
+- **Con texto solo si es ambiguo**: fuente monospace, tamaño mínimo legible en Quest 2 (≥18pt en world-space equivalente), color `#E8D5A3`
+- **Distancia de aparición**: solo visible a ≤1.5 metros del objeto
+- **Sin animación pulsante**: el indicador es estático. El movimiento en VR causa fatiga visual
+
+#### 7.3.2 Subtítulos de Diálogo
+
+Durante interrogatorio, los diálogos del NPC tienen subtítulos opcionales (accesibilidad).
+
+- **Posición**: billboard anclado a 20cm por encima de la cabeza del NPC, no en la pantalla
+- **Fondo**: panel negro semi-transparente `#000000` a 70% opacidad, bordes sin redondear
+- **Texto**: blanco `#FFFFFF`, fuente monospace, máximo 2 líneas, máximo 40 caracteres por línea
+- **Nombre del hablante**: línea superior en color de identidad del personaje (ver tabla abajo), mayúsculas, tamaño ligeramente menor
+- **Desaparece**: al terminar la frase de audio, fade out en 0.3s — sin esperar input
+
+#### Colores de identidad para subtítulos
+
+| Personaje | Color de nombre | Hex |
+|---|---|---|
+| Gajito | Verde lima | `#8BC34A` |
+| Commissioner Spud | Marrón tierra | `#6B4423` |
+| Moni Graná Fert | Granate | `#8B2332` |
+| Gerry Broccolini | Verde oscuro | `#4A6B30` |
+| Lola Persimmon | Naranja-marrón | `#C4703A` |
+| Barry Peel | Amarillo frío | `#D4C840` |
+
+#### 7.3.3 Indicador de Voz Activa (STT)
+
+Cuando el micrófono está escuchando la voz del jugador, aparece un indicador mínimo.
+
+- **Posición**: esquina inferior izquierda del campo visual, anclado a head-space (no world-space)
+- **Forma**: tres líneas horizontales de audio equalizadas — animación de onda cuando detecta voz
+- **Color activo**: `#E8D5A3` (blanco cálido). **Color inactivo**: `#4A4035` (casi invisible en escena oscura)
+- **Tamaño**: 32×16px equivalente — mínimo perceptible, no más
+- **Sin texto "escuchando..."** — el ícono es suficiente
+
+---
+
+### 7.4 Elementos de Sistema (Menús)
+
+Solo accesibles desde pausa. El mundo se congela y desatura al 20% cuando están activos.
+
+#### 7.4.1 Paleta de Sistema
+
+| Elemento | Color | Uso |
+|---|---|---|
+| Fondo de panel | `#0D0D0D` | Negro casi puro — el mundo desaturado es el "fondo" |
+| Borde de panel | `#3D3020` | Marrón oscuro, 1px geométrico |
+| Texto primario | `#E8D5A3` | Blanco cálido — nunca blanco puro en noir |
+| Texto secundario | `#7A6A50` | Para descripciones, labels inactivos |
+| Acción confirmada | `#8B1A1A` | Rojo tinta — solo para confirmaciones destructivas |
+| Acción principal | `#E8D5A3` | Mismo que texto primario — sin botones de color |
+
+#### 7.4.2 Tipografía de Sistema
+
+- **Fuente**: monospace serif (tipo máquina de escribir). Referencia: *Special Elite* o equivalente con licencia libre
+- **Tamaño mínimo en Quest 2**: 16pt para texto de cuerpo, 24pt para títulos — nunca menor
+- **Sin bold pesado**: el noir es delgado. Usar peso regular, itálica para énfasis
+- **Sin iconos de color**: los íconos son outline geométrico en `#E8D5A3`
+
+#### 7.4.3 Layout del Menú de Pausa
+
+Panel único centrado, sin tabs ni navegación profunda. Ancho máximo: 60% del FOV.
+
+```
+┌─────────────────────────────┐
+│  LIMONCHERO 3D              │
+│  ─────────────────          │
+│  Continuar                  │
+│  Revisar notas              │
+│  Configuración              │
+│  ─────────────────          │
+│  Salir al menú principal    │
+└─────────────────────────────┘
+```
+
+Sin animaciones de entrada/salida elaboradas — fade simple a 0.2s.
+
+---
+
+### 7.5 Lo que Está Prohibido en la UI
+
+- **Barras de vida, stamina o medidores de estado**: no es un juego de acción
+- **Minimapa**: la escena es un único club — el jugador lo navega físicamente
+- **Pop-ups de logros durante gameplay**: interrumpen la inmersión noir
+- **Colores de alta saturación fuera del sistema** (excepto rojo tinta `#8B1A1A` para confirmaciones destructivas)
+- **Fuentes sans-serif redondeadas**: incompatibles con la estética noir-frutícola
+- **Animaciones de UI que duren más de 0.3s**: en VR el movimiento de UI causa incomodidad
+- **Texto en pantalla completa que no sea diegético**: el noir es mostrar, no explicar
 
 ---
 

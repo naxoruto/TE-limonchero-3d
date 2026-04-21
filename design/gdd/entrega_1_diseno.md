@@ -18,7 +18,7 @@ Desarrollar un prototipo funcional de un videojuego de detectives en Realidad Vi
 1. **Diseñar e implementar un entorno 3D inmersivo** con ambientación noir en Godot 4, optimizado para Meta Quest 2, que permita al jugador explorar escenarios e interactuar con objetos y pistas.
 2. **Integrar un sistema de Speech-to-Text (STT)** que permita la comunicación oral en inglés del jugador (Limonchero) hacia los NPCs, cuyas respuestas se mostrarán exclusivamente como texto en pantalla (sin síntesis de voz).
 3. **Desarrollar un chatbot conversacional basado en LLM** con prompts especializados para cada NPC, dotándolos de personalidad, información y comportamiento únicos en inglés para los interrogatorios.
-4. **Implementar un asistente LLM** (Limoncito) que apoye al jugador en español: sugiera cómo formular preguntas antes de acercarse a un NPC, aclare respuestas de los NPCs, y corrija errores gramaticales en inglés de forma constructiva cuando el jugador los cometa.
+4. **Implementar un asistente LLM** (Gajito) que apoye al jugador en español: sugiera cómo formular preguntas antes de acercarse a un NPC, aclare respuestas de los NPCs, y corrija errores gramaticales en inglés de forma constructiva cuando el jugador los cometa.
 5. **Evaluar la usabilidad, inmersión y aceptación del prototipo** mediante pruebas con usuarios reales, utilizando instrumentos validados (SUS, IMI, TAM) y cuestionarios pre/post experiencia.
 
 ---
@@ -206,7 +206,7 @@ Defensa E3                                                                      
 │  │  / ENTRADA  │───►│  ESCENA DEL  │───►│  INTERROGATORIO    │  │
 │  │             │    │  CRIMEN      │    │                    │  │
 │  │[Commissioner│    │ [Pista 1-5+] │    │ ┌──┐┌──┐┌──┐┌──┐  │  │
-│  │   Beet]     │    │ [Limoncito]  │    │ │S1││S2││S3││S4│  │  │
+│  │   Spud]     │    │ [Gajito]  │    │ │S1││S2││S3││S4│  │  │
 │  │             │    │ [Ambiente]   │    │ └──┘└──┘└──┘└──┘  │  │
 │  └─────────────┘    └──────────────┘    └────────────────────┘  │
 │         │                                         │              │
@@ -215,7 +215,7 @@ Defensa E3                                                                      
 │  ┌──────────────────────────────────────────────────────────┐   │
 │  │                CAPA DE INTELIGENCIA ARTIFICIAL            │   │
 │  │  Micrófono → STT (Whisper) → LLM (Ollama) → Texto (panel)│   │
-│  │              + Limoncito (asistente en español)           │   │
+│  │              + Gajito (asistente en español)           │   │
 │  └──────────────────────────────────────────────────────────┘   │
 │                                                                  │
 │  ┌──────────────────────────────────────────────────────────┐   │
@@ -238,7 +238,7 @@ Defensa E3                                                                      
 | RF-07 | El sistema evalúa si la acusación es correcta y muestra un desenlace apropiado (éxito/fracaso) | Alta |
 | RF-08 | El jugador dispone de un inventario visual en VR para revisar las pistas recopiladas | Media |
 | RF-09 | Se muestran subtítulos en un panel world-space con el diálogo (lo que dice el jugador y el NPC) | Media |
-| RF-10 | El asistente Limoncito analiza el input del jugador (STT) de forma automática y ofrece correcciones en español si se detectan errores gramaticales; también puede sugerir preguntas y aclarar respuestas de los NPCs | Alta |
+| RF-10 | El asistente Gajito analiza el input del jugador (STT) de forma automática y ofrece correcciones en español si se detectan errores gramaticales; también puede sugerir preguntas y aclarar respuestas de los NPCs | Alta |
 | RF-11 | El jugador puede navegar entre los distintos escenarios (oficina, escena del crimen, interrogatorio) | Alta |
 | RF-12 | El sistema conserva el historial de conversación con cada NPC durante la partida | Media |
 
@@ -266,15 +266,15 @@ graph LR
 		UC2["Recoger pista"]
 		UC3["Revisar inventario de pistas"]
 		UC4["Interrogar sospechoso por voz"]
-		UC5["Acusar sospechoso ante Commissioner Beet"]
-		UC6["Recibir briefing del Commissioner Beet ⚑ precondición"]
-		UC7["Limoncito: evaluar inglés y apoyar investigación (automático)"]
+		UC5["Acusar sospechoso ante Commissioner Spud"]
+		UC6["Recibir briefing del Commissioner Spud ⚑ precondición"]
+		UC7["Gajito: evaluar inglés y apoyar investigación (automático)"]
 		UC8["Navegar entre escenarios"]
 	end
 
 	Jugador((Jugador / Detective))
 	LLM_NPC(("Servicio LLM\n(NPCs)"))
-	LLM_Limoncito(("Servicio LLM\n(Limoncito / Asistente)"))
+	LLM_Gajito(("Servicio LLM\n(Gajito / Asistente)"))
 	STT((Servicio STT))
 	%% Relaciones jugador → UC
 	Jugador --> UC6
@@ -296,7 +296,7 @@ graph LR
 	%% Servicios externos
 	UC4 --> STT
 	UC4 --> LLM_NPC
-	UC7 --> LLM_Limoncito
+	UC7 --> LLM_Gajito
 	UC5 --> LLM_NPC
 	UC6 --> LLM_NPC
 ```
@@ -324,10 +324,10 @@ sequenceDiagram
 	L-->>B: "Estuve en casa toda la noche, no sé de qué me hablas..."
 	B-->>U: {texto_respuesta}
 	U->>U: Mostrar texto del NPC en panel world-space
-	B->>L: Evaluar inglés del jugador (LLM Asistente Limoncito)
+	B->>L: Evaluar inglés del jugador (LLM Asistente Gajito)
 	L-->>B: {hay_error: bool, correccion: "..."}
 	B-->>U: corrección si aplica
-	U->>J: Limoncito muestra corrección en español como texto (si hubo error)
+	U->>J: Gajito muestra corrección en español como texto (si hubo error)
 ```
 
 #### 4.5.2. Caso de Uso: Recoger Pista
@@ -357,7 +357,7 @@ sequenceDiagram
 	participant B as Backend
 	participant L as LLM
 
-	J->>U: Se acerca al Commissioner Beet
+	J->>U: Se acerca al Commissioner Spud
 	U->>U: Activar modo acusación
 	J->>U: Habla: "Creo que el culpable es [Sospechoso X] porque..."
 	U->>B: POST /transcribe {audio}
@@ -517,7 +517,7 @@ stateDiagram-v2
 
 ### 5.2. Descripción del Prototipo
 Una escena minimalista en Godot con:
-- Un entorno VR básico (sala con mesa y silla) corriendo en Meta Quest 3
+- Un entorno VR básico (sala con mesa y silla) corriendo en Meta Quest 2
 - 1 NPC (modelo 3D básico o placeholder) con un system prompt de personalidad
 - Pipeline funcional: el jugador habla → Whisper transcribe → LLM genera respuesta → texto mostrado en panel world-space del NPC
 

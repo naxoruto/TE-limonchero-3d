@@ -71,7 +71,7 @@
 **Prueba de concepto técnica (lo más importante):**
 ```
 Micrófono Quest 2 → Whisper (STT local detecta inglés) → LLM (recibe prompt en inglés) → Respuesta texto inglés → Panel world-space en NPC dentro de Godot XR
-                                                       → LLM Asistente (Félix) evalúa gramática → Corrección en español si hay error
+                                                       → LLM Asistente (Gajito) evalúa gramática → Corrección en español si hay error
 ```
 
 ---
@@ -80,7 +80,7 @@ Micrófono Quest 2 → Whisper (STT local detecta inglés) → LLM (recibe promp
 
 | # | Actividad | Entregable |
 |---|-----------|-----------|
-| 1 | Construir entorno 3D noir (El Cisne Negro - una escena única) | Escena Godot |
+| 1 | Construir entorno 3D noir (El Agave y La Luna - una escena única) | Escena Godot |
 | 2 | Implementar locomoción VR (teletransporte + continua) via Godot XR Tools (OpenXR) | Sistema de movimiento |
 | 3 | Sistema de pistas (objetos interactuables, inventario VR) | Mecánica de gameplay |
 | 4 | 3-4 NPCs con prompts únicos EN INGLÉS (personalidad, coartada, info del crimen) | Sistema de NPCs |
@@ -124,5 +124,5 @@ Micrófono Quest 2 → Whisper (STT local detecta inglés) → LLM (recibe promp
 | **Backend local** | Python + FastAPI | Proxy entre Godot y los servicios de IA |
 | **Assets 3D** | Godot Asset Library / Kenney.nl / itch.io | Estilo low-poly noir |
 | **Control de versiones** | Git + GitHub/GitLab | Obligatorio para entrega |
-| **Idioma del juego** | INGLÉS (NPCs responden en texto; jugador habla en inglés), ESPAÑOL (Ayudante Félix y UI) | — |
-| **Asistente de idioma** | LLM evaluador (Félix "El Viejo") que analiza el STT del jugador y corrige errores de gramática/vocabulario en español | Si el STT saca "I is happy", Félix interrumpe y corrige |
+| **Idioma del juego** | INGLÉS (NPCs responden en texto; jugador habla en inglés), ESPAÑOL (Ayudante Gajito y UI) | — |
+| **Asistente de idioma** | LLM evaluador (Gajito) que analiza el STT del jugador y corrige errores de gramática/vocabulario en español | Si el STT saca "I is happy", Gajito interrumpe y corrige |

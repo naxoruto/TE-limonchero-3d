@@ -31,7 +31,7 @@ flat color areas, detective mystery atmosphere, character sheet white background
 
 ---
 
-### Limoncito
+### Gajito
 *Asistente del detective. Key lime pequeño y nervioso.*
 
 ```
@@ -54,27 +54,31 @@ full body front and side view, character turnaround sheet
 
 ---
 
-### Commissioner Wallace Beet
-*Autoridad. Betabel/remolacha. Impaciente y condescendiente.*
+### Commissioner Wallace Spud
+*Autoridad. Papa/patata. Impaciente y condescendiente.*
 
 ```
-low-poly faceted 3D character, anthropomorphic beet beetroot vegetable character, 
+low-poly faceted 3D character, anthropomorphic potato tuber vegetable character, 
 film noir 1950s aesthetic, hard side lighting, dark moody background, 
 cartoon stylized proportions, angular geometry with visible polygon faces, 
 flat color areas, detective mystery atmosphere, character sheet white background,
-deep magenta red skin color #8B1A4A, very wide stocky body, short neck almost no neck, 
-broad shoulders drooping down, prominent belly, short legs, 
-1950s police commissioner uniform dark navy blue, gold epaulettes and badge, 
-buttons straining over belly, impatient stern expression, small head relative to wide body, 
-short thick stem on top of head, full body front and side view, character turnaround sheet
+earthy brown skin color #6B4423 with tonal variation lighter #8A5A30 on top darker #4A2E18 below, 
+irregular asymmetric oval body shape like a real potato, one shoulder slightly higher, 
+off-center belly, lumpy amorphous silhouette, matte granular skin texture, 
+visible potato eyes small dark sprout indentations #2E1A0A distributed on body not face, 
+no stem on head, rounded irregular head shape, 
+1950s police commissioner uniform dark navy blue #1E2A4A, gold epaulettes and badge, 
+buttons straining over uneven belly, impatient stern expression, 
+broad stocky posture short neck, full body front and side view, character turnaround sheet
 ```
 
 **Parámetros Midjourney:** `--ar 3:4 --style raw --v 6`
 
 **Notas de ajuste:**
-- Si sale demasiado delgado → agregar `extremely wide body, barrel-chested, obese silhouette`
-- Si el uniforme no es noir → agregar `1950s police chief uniform, noir detective movie style`
-- Si la piel es rosada en vez de rojo-vino → agregar `dark wine red skin, deep magenta, NOT pink`
+- Si sale demasiado simétrico → agregar `asymmetric body, one side slightly different from other, lumpy irregular shape, like a real unwashed potato`
+- Si no tiene ojos de papa → agregar `small dark potato eye indentations on body, sprout marks on torso and shoulders, NOT on face`
+- Si el marrón sale muy uniforme → agregar `tonal variation in skin color, lighter brown on top darker brown below, earthy muddy tones`
+- Si se confunde con humano → agregar `clearly a potato not a person, tuber vegetable character, dirt-colored skin`
 
 ---
 
@@ -108,29 +112,32 @@ Reemplazar `subtle dark spots appearing on right hand only` por:
 
 ---
 
-### Vivienne "Vivi" Tangerine
-*Sospechosa inocente. Mandarina. Cantante del club.*
+### Moni Graná Fert
+*Sospechosa inocente. Granada. Cantante del club. Femme Fatale.*
 
 ```
-low-poly faceted 3D character, anthropomorphic tangerine mandarin fruit character, 
+low-poly faceted 3D character, anthropomorphic pomegranate fruit character, 
 film noir 1950s aesthetic, hard side lighting, dark moody background, 
 cartoon stylized proportions, angular geometry with visible polygon faces, 
 flat color areas, detective mystery atmosphere, character sheet white background,
-warm orange skin color #F4A340, wide round flat head wider than tall, 
-segment lines subtly visible on torso skin like mandarin sections, 
-elegant 1950s red cocktail dress with angular flared skirt, 
-red dress #CC2200 highest saturation in scene, 
-exaggerated smile that does not reach the eyes, controlled composed expression, 
-nightclub singer glamorous pose, small hidden travel bag near feet, 
+deep pomegranate red skin color #8B2332, round globular head with 
+prominent jagged five-point crown on top like pomegranate calyx, 
+small ruby red seed facets #C8102E peeking through cracks on torso and arms, 
+elegant 1950s dark crimson cocktail dress long angular flared skirt, 
+low-cut neckline sultry silhouette, crimson dress #A0202F reading as one red mass with skin, 
+femme fatale pose confident hip tilt, slow calculated smile half-lidded eyes, 
+dark crimson lipstick matching skin, seductive composed expression, 
+nightclub singer pose microphone in hand, small hidden travel bag near feet, 
 full body front and side view, character turnaround sheet
 ```
 
 **Parámetros Midjourney:** `--ar 3:4 --style raw --v 6`
 
 **Notas de ajuste:**
-- Si el vestido no es rojo suficientemente brillante → agregar `vivid saturated red dress, most saturated color in image`
-- Si la expresión parece sincera → agregar `smile that hides something, eyes not smiling, uncanny pleasant expression`
-- Si la cabeza es muy redonda/esférica → agregar `flat wide head, disc-shaped head wider than tall`
+- Si la corona no se lee como granada → agregar `distinct jagged crown on top of head, pomegranate calyx crown, 5-point star crown integrated with head`
+- Si las semillas rubí no aparecen → agregar `small visible pomegranate seeds peeking through cracks in skin, ruby red seed highlights on body`
+- Si parece demasiado inocente/cálida → agregar `femme fatale archetype, dangerous seductive presence, noir dame, calculating gaze, cold beauty`
+- Si el rojo se confunde con otros personajes → agregar `deep wine-red skin darker than lipstick, skin more muted than dress`
 
 ---
 
@@ -180,7 +187,7 @@ full body front and side view, character turnaround sheet
 **Parámetros Midjourney:** `--ar 3:4 --style raw --v 6`
 
 **Notas de ajuste:**
-- Si la piel sale muy naranja (similar a Vivi) → agregar `brownish orange, darker more muted than bright orange, desaturated warm orange`
+- Si la piel sale muy roja (similar a Moni) → agregar `brownish orange skin, clearly orange not red, warm terracotta not crimson`
 - Si no tiene la corona del caqui → agregar `four-pointed leaf crown on head, persimmon calyx hair accessory`
 - Si no tiene manchas de tinta → agregar `ink stained fingertips, accountant ink marks on hands`
 
@@ -195,10 +202,10 @@ low-poly faceted 3D characters group shot, anthropomorphic fruit and vegetable c
 film noir 1950s nightclub scene, dark moody noir lighting, 
 cartoon stylized proportions, angular geometry with visible polygon faces,
 left to right by height: giant dark green broccoli security guard with tiny hat, 
-wide stocky dark red beetroot police commissioner in uniform, 
+wide stocky earth-brown potato police commissioner in dark blue uniform, 
 tall elegant banana in black suit, 
 short lime green key lime assistant energetic pose, 
-orange mandarin woman in red dress, 
+deep red pomegranate woman with jagged crown in crimson dress, 
 brownish orange persimmon woman in office attire,
 height variation clearly visible, character lineup, 
 dark nightclub noir background, neon green olive light

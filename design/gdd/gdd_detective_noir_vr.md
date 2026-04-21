@@ -103,7 +103,7 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 
 **La verdad:** Bartholomew "Barry" Peel (plátano, 34 años) mató a Corn. El padre de Barry lo declaró públicamente indigno del apellido antes de morir y puso el fideicomiso familiar bajo control de Cornelius. Durante tres años, Barry tuvo que pedirle permiso a Corn para acceder a su propia herencia mientras era humillado en privado. Esa noche, Barry descubrió que el acuerdo de "liberación" que Corn le presentó era una trampa — cederle el 40% de la empresa bananera. Subió al piso de arriba, confrontó a Corn, y cuando Corn se negó, lo disparó. **Móvil: duelo e identidad, no codicia.** Barry mató para firmar su propio nombre por primera vez.
 
-**Eco narrativo del clímax:** Al inicio Barry le dice a Limoncito: *"My father always said: a man who can't sign his own name isn't a man at all. Tonight I finally understand what he meant."* Al final, confrontado con las pruebas: *"I signed mine tonight. Just not on paper."* Limonchero reconoce que lo supo desde el principio — eligió seguir el proceso de todas formas porque acusar sin pruebas no es justicia.
+**Eco narrativo del clímax:** Al inicio Barry le dice a Gajito: *"My father always said: a man who can't sign his own name isn't a man at all. Tonight I finally understand what he meant."* Al final, confrontado con las pruebas: *"I signed mine tonight. Just not on paper."* Limonchero reconoce que lo supo desde el principio — eligió seguir el proceso de todas formas porque acusar sin pruebas no es justicia.
 
 ---
 
@@ -115,44 +115,45 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 | Fruta | Limón amarillo grande |
 | Trasfondo | El mejor detective de Latinoamérica. Ex-jefe del escuadrón de agentes en cubierto más grande de LATAM. |
 | Motivación | Ambición legítima: busca nuevos retos. EE.UU. es el siguiente nivel. |
-| Idioma | No habla inglés — se comunica en español con Limoncito |
+| Idioma | No habla inglés — se comunica en español con Gajito |
 
 ---
 
-#### NPC Asistente: Limoncito
+#### NPC Asistente: Gajito
 | Campo | Valor |
 |-------|-------|
 | Fruta | Limón de pica (key lime) — más pequeño, más ácido |
 | Rol | Traductor oficial asignado. Asistente de apoyo al jugador. |
-| Función | Sugiere cómo formular preguntas, aclara respuestas de NPCs, da contexto cultural. El jugador habla directamente en inglés — Limoncito apoya, no reemplaza. |
+| Función | Sugiere cómo formular preguntas, aclara respuestas de NPCs, da contexto cultural. El jugador habla directamente en inglés — Gajito apoya, no reemplaza. |
 | Idioma | Español (con Limonchero) / Inglés (con NPCs cuando traduce) |
 | Personalidad | Energético, hiperpreparado, habla de más cuando está nervioso. Admira a Limonchero y lo encuentra imposible en partes iguales. |
-| Prompt base LLM | `Eres Limoncito, asistente oficial del detective Limonchero. Hablas con él en ESPAÑOL. Cuando el jugador comete un error gramatical en inglés, lo corriges de forma irónica pero constructiva. También puedes sugerir cómo formular preguntas a los NPCs y dar contexto sobre el caso. Nunca reveles al culpable directamente.` |
+| Prompt base LLM | `Eres Gajito, asistente oficial del detective Limonchero. Hablas con él en ESPAÑOL. Cuando el jugador comete un error gramatical en inglés, lo corriges de forma irónica pero constructiva. También puedes sugerir cómo formular preguntas a los NPCs y dar contexto sobre el caso. Nunca reveles al culpable directamente.` |
 
 ---
 
-#### NPC Autoridad: Commissioner Wallace Beet
+#### NPC Autoridad: Commissioner Wallace Spud
 | Campo | Valor |
 |-------|-------|
-| Fruta | Betabel (remolacha) |
-| Rol | Asigna el caso al inicio. Recibe la acusación final. Evalúa si es correcta. |
-| Personalidad | Impaciente, condescendiente. Ya tiene un sospechoso en mente (Gerry). Quiere cerrar el caso antes de medianoche. |
+| Fruta | Papa (patata) |
+| Rol | **Tutor del inicio** + autoridad del caso. Entrega la primera evidencia (Informe Preliminar del NFPD), enseña la mecánica de clasificar pistas, y luego vuelve a su rol de presión del reloj. Recibe la acusación final y evalúa si es correcta. |
+| Personalidad | Impaciente, condescendiente. Ya tiene un sospechoso en mente (Gerry). Quiere cerrar el caso antes de medianoche. En el tutorial inicial es ligeramente más paciente — entrega el informe y se aparta. |
 | Idioma | Solo inglés |
-| Prompt base LLM | `You are Commissioner Beet. You speak ONLY IN ENGLISH. You are impatient and condescending. You want a quick arrest. If presented with a suspect and evidence, you accept. If no suspect by midnight, you arrest Gerry yourself.` |
+| Frase de tutorial | *"Detective. Crime scene's upstairs, door locked from inside, window cracked open. Here — preliminary report, everything we got. Four suspects, all still in the building. My money's on the bouncer, but that's your problem now. Midnight. Clock's ticking."* |
+| Prompt base LLM | `You are Commissioner Spud. You speak ONLY IN ENGLISH. You are impatient and condescending. You want a quick arrest. If presented with a suspect and evidence, you accept. If no suspect by midnight, you arrest Gerry yourself. In the opening tutorial scene only, you are slightly more patient — you hand over the preliminary report and walk away without coaching.` |
 
 ---
 
-#### Sospechoso 1: Vivienne "Vivi" Tangerine — La Cantante
+#### Sospechoso 1: Moni Graná Fert — La Cantante (Femme Fatale)
 | Campo | Valor |
 |-------|-------|
-| Fruta | Mandarina |
-| Nombre | Vivienne "Vivi" Tangerine, 29 años |
+| Fruta | Granada |
+| Nombre | Moni Graná Fert, 29 años |
 | Relación con la víctima | Cantante principal. Corn la tenía chantajeada con su pasado (orden de búsqueda por legítima defensa). |
-| Personalidad | Gentileza exagerada como técnica de control. Sonrisa que no llega a los ojos. |
+| Personalidad | Femme Fatale. Magnética, no cálida. Desvía preguntas difíciles con coqueteo y preguntas personales al detective. El encanto no se siente como manipulación — se siente como atención. |
 | Lo que oculta | Planeaba escapar esa noche — maleta escondida en la cocina. Su reacción al saber de la muerte fue alivio, lo cual la hace parecer culpable. |
 | ¿Es culpable? | **No** |
 | Coartada | Camerino 9:45–10:30 PM. Verificable, con hueco de ~20 minutos. |
-| Prompt LLM | `You are Vivi Tangerine. You speak ONLY IN ENGLISH. You are warm and composed. You deny any conflict with Cornelius. If asked about the 20-minute gap, you say you needed air. If the detective mentions the kitchen or a dark coat, you tense briefly before recovering.` |
+| Prompt LLM | `You are Moni Graná Fert. You speak ONLY IN ENGLISH. You are a femme fatale — magnetic, composed, seductive. You deflect hard questions with flirtation and personal questions back at the detective. You deny any conflict with Cornelius — "Corn and I had an understanding." If asked about the 20-minute gap, let the silence sit, then say softly: "A girl needs air sometimes, detective." If the detective mentions the kitchen or a dark coat, you tense briefly before recovering with a slow smile.` |
 
 ---
 
@@ -210,7 +211,7 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 | R1 | **El Acuerdo del Fideicomiso** — Documento rasgado y re-doblado que Barry debía firmar esa noche. Ceder el 40% de su empresa era una trampa | Reservado privado de Barry | 🔴 Alta | Barry (móvil) |
 | R2 | **La Llave Maestra** — Llave del piso de arriba encontrada en el bolsillo interior del saco de Barry | Saco de Barry (inspección directa) | 🔴 Alta | Barry (acceso a la oficina) |
 | R3 | **La Mancha de Pólvora** — Cubierta con talco en la muñeca derecha de Barry. Visible bajo luz UV | Muñeca de Barry | 🔴 Alta | Barry (disparó el arma) |
-| R4 | **El Testimonio de Vivi** — Vio a alguien "con traje amarillo" subir las escaleras hacia el piso de arriba ~22:00 | Camerino / conversación con Vivi | 🔴 Alta | Barry (lo ubica en el piso de arriba) |
+| R4 | **El Testimonio de Moni** — Vio a alguien "con traje amarillo" subir las escaleras hacia el piso de arriba ~22:00 | Camerino / conversación con Moni | 🔴 Alta | Barry (lo ubica en el piso de arriba) |
 | R5 | **La Puerta Trasera** — Gerry abandonó su puesto 22 minutos. Alguien pudo entrar sin ser visto | Puerta trasera / testimonio de Gerry | 🟡 Media | Ruta alternativa de acceso |
 | R6 | **Las Manchas en las Manos de Barry** — Manchas oscuras que aparecen gradualmente en sus manos durante la noche | Observación directa de Barry | 🟡 Media | Barry (señal visual de culpa) |
 | R7 | **Los Documentos Quemados** — Ceniza en el baño de empleados. Lola quemó algo esa noche | Baño de empleados | 🟡 Media | Lola (actividad sospechosa, pero no el crimen) |
@@ -219,8 +220,8 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 
 | # | Distractor | Ubicación | Por qué confunde |
 |---|-----------|-----------|-----------------|
-| D1 | **La Maleta de Vivi** — Maleta escondida en la cocina. Planeaba escapar esa noche | Cocina del club | Vivi tenía motivos para actuar, pero no mató a nadie |
-| D2 | **El Abrigo Oscuro** — Vivi lo usó al salir de la cocina. Varias personas lo vieron y lo confunden con una figura sospechosa | Perchero de la cocina | Confunde la identidad del sospechoso |
+| D1 | **La Maleta de Moni** — Maleta escondida en la cocina. Planeaba escapar esa noche | Cocina del club | Moni tenía motivos para actuar, pero no mató a nadie |
+| D2 | **El Abrigo Oscuro** — Moni lo usó al salir de la cocina. Varias personas lo vieron y lo confunden con una figura sospechosa | Perchero de la cocina | Confunde la identidad del sospechoso |
 | D3 | **Las Irregularidades Contables** — Registros que muestran desvíos de fondos por parte de Lola | Oficina contable | Expone el fraude de Lola, pero no tiene relación con el crimen |
 | D4 | **El Historial de Gerry** — Rumores de que trabajó para gente peligrosa antes del club | Conversación con otros NPCs | Gerry parece peligroso, pero protegía a su hermana |
 | D5 | **Copa con huellas no identificadas** — Copa de bourbon a medio tomar en el reservado de Barry | Reservado privado | Las huellas son de Barry, pero sin contexto parecen de un invitado anónimo |
@@ -231,7 +232,7 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 
 > **Nivel único:** Todo el juego transcurre en el club nocturno **"El Agave y La Luna"**. El escenario es uno solo, con varias zonas navegables de forma libre dentro del club.
 
-### 4.1. Mapa General del Club "El Cisne Negro"
+### 4.1. Mapa General del Club "El Agave y La Luna"
 ```
                     [ ENTRADA / VESTÍBULO ]
                          |        |
@@ -245,9 +246,9 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
             /                       \
   [baños / camerino]        [ ALA DE OFICINAS ]
                                     |
-                         [ OFICINA DE ERNESTO ]  ← escena del crimen
+                         [ OFICINA DE CORNELIUS ]  ← escena del crimen
                                     |
-                         [ PASILLO DE SERVICIO ]  ← ruta de Ramona
+                         [ PASILLO DE SERVICIO ]  ← ruta de Barry
                                     |
                          [ ALMACÉN / BODEGA ]
 ```
@@ -256,46 +257,47 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 
 #### Zona 1: Vestíbulo / Entrada
 - **Propósito:** Zona de entrada, presenta el ambiente del club y la noche de la gala.
-- **Elementos interactuables:** Fuente ornamental (pistola sumergida, solo visible con inspección detallada — pista opcional bonus).
-- **NPCs presentes:** Comisario Aparicio (cerca de la entrada, da el briefing y recibe la acusación final).
-- **Ambiente:** Lluvia en los ventanales, música jazz desde el salón, invitados atónitos por la noticia del crimen.
+- **Elementos interactuables:** Guardarropa con lista de invitados (el nombre de Barry Peel marcado — llegó a las 9:15 PM). Espejo del guardarropa orienta al jugador hacia el salón.
+- **NPCs presentes:** **Commissioner Wallace Spud** (cerca de la entrada, da el briefing tutorial, entrega el Informe Preliminar del NFPD, y recibe la acusación final).
+- **Ambiente:** Lluvia en los ventanales, música jazz desde el salón, neón verde aceituna filtrándose por la puerta.
 
 #### Zona 2: Salón Principal / Barra
-- **Propósito:** Área social donde se encuentran los sospechosos y el ayudante.
-- **Elementos interactuables:** Copas, ceniceros, teléfono de barra (confirmar llamadas de Ramona hablando con el barman).
+- **Propósito:** Hub social. Todos los sospechosos son accesibles o localizables desde aquí.
+- **Elementos interactuables:** Copas, ceniceros, barra de caoba (barman puede confirmar llegadas y consumos), reloj de pared art-deco (tiempo narrativo).
 - **NPCs presentes:**
-  - **Don Alberto Fuentes** (en la barra, copa en mano)
-  - **Sofía Ramos** (en el escenario o camerino adjunto, llorando)
-  - **Félix "El Viejo" Durán** (sentado en una mesa, observando — disponible en todo momento para consultas)
+  - **Barry Peel** (reservado privado al fondo — copa de bourbon a medio tomar, acuerdo del fideicomiso boca abajo en la mesa; pronuncia su frase de apertura al inicio)
+  - **Moni Graná Fert** (cerca del escenario o camerino adjunto)
+  - **Lola Persimmon** (sentada en una mesa, cooperativa en exceso con cualquiera que se acerque)
+  - **Gerry Broccolini** (de guardia cerca de la barra o la puerta trasera)
+  - **Gajito** (junto al jugador en todo momento)
 
 #### Zona 3: Almacén / Bodega
-- **Propósito:** Zona trasera del club. Sospechoso en este lugar durante el crimen.
-- **Elementos interactuables:** Cajas de botellas, facturas ilegales (pista opcional que expone la operación de Víctor).
-- **NPCs presentes:**
-  - **Víctor "La Víbora" Salas** (haciendo inventario, nervioso al ver al detective).
+- **Propósito:** Zona trasera del club. Acceso al pasillo de servicio desde la parte trasera.
+- **Elementos interactuables:** Cajas de botellas, silla plegable junto a la salida trasera (puesto de Gerry, vacío durante 22 minutos), **maleta de Moni** (escondida detrás de sacos de harina — pista D1, red herring).
+- **NPCs presentes:** Ninguno con nombre. Personal de cocina en segundo plano (no interactivos).
 
 #### Zona 4: Pasillo de Servicio
-- **Propósito:** Ruta oculta que conecta el almacén con la oficina. Ruta que usó Ramona.
-- **Elementos interactuables:** **Pañuelo con iniciales "R.V."** (en el suelo, pista #2).
-- **NPCs presentes:** Ninguno. Solo el detective puede acceder (puerta entreabierta).
+- **Propósito:** Ruta oculta que conecta el almacén con la escalera trasera hacia el piso de arriba. Ruta que usó Barry para subir y para bajar (via Zona 6).
+- **Elementos interactuables:** Dos juegos de huellas en el polvo (ronda habitual de Gerry + zapatos de vestir de Barry). Colilla de palillo de canela junto a la escalera trasera.
+- **NPCs presentes:** Ninguno. Solo el detective puede acceder (puerta entreabierta desde la bodega).
 
-#### Zona 5: Oficina de Ernesto (Escena del Crimen)
-- **Propósito:** Núcleo del misterio. Aquí yace el cadáver y están la mayoría de las pistas.
+#### Zona 5: Oficina de Cornelius (Escena del Crimen)
+- **Propósito:** Núcleo del misterio. Aquí yace el cadáver y están las pistas físicas clave.
 - **Elementos interactuables:**
-  - Cuerpo de Ernesto (inspeccionable)
-  - Caja fuerte abierta (contenido revuelto — escenificación del "robo")
-  - **El Testamento** sobre el escritorio (pista #1)
-  - **El Casquillo** detrás de la estantería caída (pista #3)
-  - **El Registro de Llamadas** en mesa auxiliar (pista #5)
-  - Cajón cerrado con llave → llave encontrada en el bolsillo de Ernesto → contiene **El Diario** (pista #4)
+  - Cuerpo de Cornelius "Corn" Maize (inspeccionable)
+  - Caja fuerte abierta (la combinación está escrita bajo el cajón del escritorio)
+  - **Copia del acuerdo del fideicomiso** sobre el escritorio — firmado por Corn, línea de Barry en blanco (contextualiza el móvil)
+  - Ventana lateral: abierta pero con pestillo girado a "cerrado" desde dentro (alguien conocía el mecanismo de moneda)
+  - Lámpara de escritorio volcada (señal visual de alteración)
+  - **Puerta secundaria** (conecta con la Zona 6 — cerrada con llave desde el lado de la oficina)
 - **NPCs presentes:** Ninguno (zona acordonada).
+- **Nota de ruta:** Barry entró por el pasillo de servicio (Zona 4) y salió por la puerta secundaria hacia la Zona 6, dejando la puerta principal de la oficina cerrada desde dentro.
 
 #### Zona 6: Área de Interrogatorio (Sala de Reuniones del Club)
-- **Propósito:** Sala donde el detective puede sentarse a interrogar formalmente a cada sospechoso.
-- **Elementos:** Mesa, sillas, espejo lateral, grabadora de mesa.
-- **NPCs presentes:** El sospechoso que el jugador elija llevar a interrogar (el detective interactuará con ellos en el salón o los citará aquí).
+- **Propósito:** Sala donde el detective interroga formalmente a cada sospechoso. Anteriormente usada por Cornelius para acuerdos privados bajo presión.
+- **Elementos:** Mesa centrada bajo lámpara, dos sillas, espejo lateral en la pared frente al NPC, bloc de notas con indentaciones del acuerdo del fideicomiso (cifras visibles con luz oblicua). **Puerta secundaria** que da al pasillo contiguo a la oficina de Cornelius — cerrada con llave desde el lado de la oficina; la marca de la llave es inspeccionable.
+- **NPCs presentes:** El sospechoso que el jugador elija citar aquí.
 - **Interacciones:** Hablar con el sospechoso (STT → LLM → TTS).
-- **NPCs presentes:** Ramona Villanueva (sentada junto a la barra, aparenta calma).
 
 ---
 
@@ -331,13 +333,13 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 |------------|-----------|-------|
 | Motor 3D | Godot 4 + OpenXR + XR Tools | Open-source, soporte nativo OpenXR |
 | VR Framework | Meta Quest (OpenXR) | Locomoción, manos, interacciones vía OpenXR |
-| Quest 3 Export | Android Export Template (Godot) | APK nativo para Quest 3 |
+| Quest 2 Export | Android Export Template (Godot) | APK nativo para Quest 2 |
 | LLM (dev) | Ollama (llama3 / mistral / gemma) | Local, gratuito, sin internet |
 | LLM (producción) | OpenAI GPT-4o-mini o Gemini Flash | Mejor calidad para demo |
 | Speech-to-Text | faster-whisper (local) | Modelo `medium` o `large-v3` |
 | Text-to-Speech | Piper TTS (local) | Voces en español, gratuito, offline |
 | Backend | Python + FastAPI | Servidor local, proxy entre Godot y IA |
-| Comunicación | HTTP/WebSocket (WiFi local) | Quest 3 ↔ PC en misma red |
+| Comunicación | HTTP/WebSocket (WiFi local) | Quest 2 ↔ PC en misma red |
 | Assets 3D | Godot Asset Library / Kenney.nl / itch.io | Estilo visual `[TODO: definir]` |
 | Audio/Música | `[TODO]` | Jazz noir, ambiente oscuro |
 | Control de versiones | Git + GitHub/GitLab | — |
@@ -351,7 +353,7 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 5. Respuesta del LLM (texto) → enviada de vuelta al Quest 2 por WiFi
 6. Godot muestra el texto del NPC en panel world-space (subtítulos)
 7. (Paralelo) El mismo texto del jugador es evaluado por el LLM Asistente
-8. Si hay errores gramaticales → Félix interviene con corrección en español
+8. Si hay errores gramaticales → Gajito interviene con corrección en español
 ```
 
 ### 5.4. Estructura del Proyecto Godot
@@ -359,7 +361,7 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 DetectiveNoirVR/
 ├── scenes/
 │   ├── main_menu.tscn
-│   └── el_cisne_negro.tscn       # Escenario único: El Cisne Negro
+│   └── el_agave_y_la_luna.tscn   # Escenario único: El Agave y La Luna
 ├── scripts/
 │   ├── core/
 │   │   ├── game_manager.gd      # Estado del juego, pistas, progreso
@@ -385,8 +387,8 @@ DetectiveNoirVR/
 │   └── fonts/                   # Fuentes
 ├── addons/
 │   └── godot-xr-tools/          # Plugin XR Tools para Godot
-├── export_presets.cfg           # Configuración export Android (Quest 3)
-└── builds/                      # APKs para Quest 3
+├── export_presets.cfg           # Configuración export Android (Quest 2)
+└── builds/                      # APKs para Quest 2
 ```
 
 ---
@@ -458,9 +460,9 @@ DetectiveNoirVR/
 |----|-----------|-----------|
 | RF-01 | El jugador puede moverse por el escenario VR (teletransporte y/o continuo) | 🔴 Alta |
 | RF-02 | El jugador puede recoger e inspeccionar pistas con las manos | 🔴 Alta |
-| RF-03 | El jugador puede hablar con NPCs usando su voz (micrófono del Quest 3) | 🔴 Alta |
+| RF-03 | El jugador puede hablar con NPCs usando su voz (micrófono del Quest 2) | 🔴 Alta |
 | RF-04 | Los NPCs responden en **inglés** con personalidad única vía LLM, mostrando el texto en un panel world-space | 🔴 Alta |
-| RF-05 | El asistente Félix evalúa el inglés del jugador (STT) y corrige errores gramaticales en español | 🔴 Alta |
+| RF-05 | El asistente Gajito evalúa el inglés del jugador (STT) y corrige errores gramaticales en español | 🔴 Alta |
 | RF-06 | El jugador puede acusar a un sospechoso ante el jefe | 🔴 Alta |
 | RF-07 | Existe un asistente LLM para ayuda con aprendizaje de inglés | 🟡 Media |
 | RF-08 | El jugador posee un inventario de pistas visible en VR | 🟡 Media |
@@ -471,7 +473,7 @@ DetectiveNoirVR/
 
 | ID | Requisito | Métrica |
 |----|-----------|---------|
-| RNF-01 | El juego debe mantener mínimo 72 FPS en Quest 3 | ≥ 72 FPS |
+| RNF-01 | El juego debe mantener mínimo 72 FPS en Quest 2 | ≥ 72 FPS |
 | RNF-02 | La latencia STT + LLM + TTS debe ser aceptable | < 5s end-to-end |
 | RNF-03 | El juego funciona conectado a un PC local vía WiFi | Red local requerida |
 | RNF-04 | El STT debe reconocer **inglés** (con acento latino) con buena precisión | > 85% accuracy |
@@ -503,7 +505,7 @@ DetectiveNoirVR/
 - **Post-test:** `[TODO: SUS + IMI + preguntas abiertas sobre la experiencia]`
 
 ### 10.4. Protocolo de Prueba Piloto
-`[TODO: Describir condiciones, duración estimada (~15-20 min), número de usuarios (5-8), equipo necesario (Quest 3 + PC)]`
+`[TODO: Describir condiciones, duración estimada (~15-20 min), número de usuarios (5-8), equipo necesario (Quest 2 + PC)]`
 
 ---
 
@@ -521,7 +523,7 @@ DetectiveNoirVR/
 
 | Riesgo | Prob. | Impacto | Mitigación |
 |--------|-------|---------|------------|
-| Inestabilidad del plugin OpenXR en Quest 3 | Media | Alto | Probar PoC en semana 1 con Godot XR Tools; si falla, ajustar configuración OpenXR |
+| Inestabilidad del plugin OpenXR en Quest 2 | Media | Alto | Probar PoC en semana 1 con Godot XR Tools; si falla, ajustar configuración OpenXR |
 | Alta latencia LLM+STT+TTS | Media | Alto | Modelos ligeros, streaming, caché de respuestas comunes |
 | Motion sickness en usuarios | Media | Alto | Teletransporte por defecto, snap turn, ≥72 FPS |
 | Costos de API en demo final | Baja | Medio | Usar Ollama local para dev, API solo para demo |
