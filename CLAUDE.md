@@ -1,27 +1,27 @@
-# Claude Code Game Studios — Detective Noir VR
+# Claude Code Game Studios — Detective Noir
 
 Indie game development managed through 49 coordinated Claude Code subagents.
 Each agent owns a specific domain, enforcing separation of concerns and quality.
 
 ## Proyecto
 
-**Nombre**: Limonchero 3D (Detective Noir VR)
-**Género**: Aventura de misterio / Detective Noir en VR
-**Plataforma**: Meta Quest 2
+**Nombre**: Limonchero 3D (Detective Noir)
+**Género**: Aventura de misterio / Detective Noir
+**Plataforma**: PC (Windows / Linux) — Controller o Mouse+Teclado
 **Estado**: En desarrollo activo
 
-Juego de rol de detective en primera persona ambientado en un mundo noir. El jugador interroga NPCs con diálogo generado por LLM, recoge pistas físicas en VR, y resuelve crímenes usando voz (STT/TTS).
+Juego de rol de detective en primera persona ambientado en un mundo noir. El jugador interroga NPCs con diálogo generado por LLM usando su voz (STT), recoge pistas con press-X, y resuelve crímenes. Los NPCs responden con texto y balbuceo característico (estilo Animal Crossing) — sin TTS.
 
 ## Technology Stack
 
 - **Engine**: Godot 4.6
 - **Language**: GDScript
 - **Version Control**: Git con trunk-based development
-- **Build System**: Godot Export Pipeline (Android/APK para Quest 2)
+- **Build System**: Godot Export Pipeline (Windows/Linux)
 - **Asset Pipeline**: Godot import system + assets/ directory
-- **XR**: OpenXR (Meta Quest 2)
-- **AI/LLM**: Servidor Python (server/) con LLM para diálogos de NPCs
-- **STT/TTS**: Integrado en el servidor de IA
+- **AI/LLM**: Servidor Python (server/) con LLM para diálogos de NPCs (localhost)
+- **STT**: faster-whisper — solo Speech-to-Text, sin TTS
+- **NPC Audio**: Balbuceo procedural local por personaje (sin Piper TTS)
 
 > **Agentes de motor activos**: Godot 4 specialists (godot-specialist, godot-gdscript-specialist, godot-shader-specialist)
 > Los agentes de Unity y Unreal NO aplican a este proyecto.

@@ -70,12 +70,12 @@ Esa noche, Barry vino a firmar un acuerdo de "liberación". Cuando lo leyó en e
 
 **Nota de motive (E4):** El ledger de Lola revela que Corn aprobó y luego revirtió un retiro de fondos de Barry dos semanas antes del asesinato. Este detalle es la última humillación en una serie — no un móvil económico independiente. Barry no mató por el dinero; mató porque el retiro revertido fue la prueba final de que Corn nunca lo dejaría libre. La causa operativa del crimen es identitaria, no material.
 
-**Comportamiento durante la investigación:** Serenidad absoluta. Piel amarilla y lisa, sin manchas visibles. Si el jugador lo observa con atención, hay manchas oscuras en sus manos que van apareciendo a lo largo de la noche.
+**Comportamiento durante la investigación:** Serenidad absoluta. Piel amarilla y lisa. Nunca pierde la compostura — esa calma es en sí misma una señal para el jugador atento.
 
 **Pistas que lo implican:**
 - El acuerdo del fideicomiso sin firmar, con rasgadura, en el reservado privado
 - Una llave maestra del piso de arriba que no debería tener
-- Mancha de pólvora cubierta con talco en la muñeca derecha (visible bajo luz UV)
+- Un encendedor de oro dejado en la oficina de Cornelius — Moni lo reconoce como de Barry
 - Testimonio de Moni: vio a alguien "con traje amarillo" subir las escaleras
 
 **Prompt LLM base:**
@@ -84,7 +84,7 @@ You are Barry Peel. You speak ONLY IN ENGLISH. You are calm, well-dressed, and p
 You had a complicated relationship with Cornelius — you describe it as "business."
 You never show anger. If pressed about the trust agreement, you say it was "being renegotiated."
 You deny being upstairs. You only crack if presented simultaneously with the trust document,
-the master key, and evidence of the gunpowder residue.
+the master key, and your gold lighter (found at the crime scene and identified by Moni).
 ```
 
 **Eco narrativo — frase de apertura (inicio del juego):**
@@ -108,6 +108,8 @@ Gajito traduce en voz baja. Limonchero asiente. Lo sabía desde el principio.
 Cantante principal del club. Voz de humo y miel oscura, vestido granate con corte bajo, labios carmesí que combinan con su piel. Lleva cuatro años en El Agave y La Luna. Corn sabía algo sobre su pasado — que cambió su nombre y tiene una orden de búsqueda pendiente por legítima defensa — y la tenía atada al club con esa información.
 
 **Personalidad:** No es cálida: es magnética. No pide — invita. Cada gesto, cada inclinación de cabeza, cada pausa antes de responder está calculada para que el interlocutor crea que está ganando la conversación cuando en realidad está siendo guiado. Usa el coqueteo como escudo y como escalpelo: desvía preguntas difíciles con preguntas personales al detective, y hace que presionarla se sienta como una grosería. Es peligrosa porque su encanto no se siente como manipulación — se siente como atención.
+
+**Prop:** Fuma cigarrillos con boquilla. Al inicio de la noche, Barry le prendió el cigarrillo con su encendedor de oro — un gesto que ella recuerda. Ese detalle la convierte en el único testigo que puede identificar el encendedor encontrado en la escena del crimen.
 
 **Secreto:** Esa noche decidió escapar de todas formas. Tiene su maleta escondida en la cocina. Cuando encontraron a Corn muerto, su primera reacción fue alivio — lo cual la hace parecer inmediatamente culpable.
 
@@ -232,7 +234,7 @@ El jugador debe clasificar cada evidencia como **útil (buena)** o **descartable
 |---|---|---|---|---|---|
 | F1 | Acuerdo del fideicomiso rasgado, sin firmar | Reservado privado de Barry | El jugador lo agarra de la mesa en VR | ✅ **Buena** | Barry |
 | F2 | Llave maestra del piso superior | Bolsillo del abrigo #14 en el guardarropa del vestíbulo | Cadena física: cenicero → talón → abrigo #14 → bolsillo (ver §5.3 del level doc) | ✅ **Buena** | Barry |
-| F3 | Residuo de pólvora cubierto con talco en muñeca derecha | Sobre el cuerpo de Barry, visible bajo la linterna UV del detective | Iluminar a Barry con UV durante el diálogo | ✅ **Buena** | Barry |
+| F3 | Encendedor de oro dejado en la oficina de Cornelius — Moni lo identifica como de Barry | Suelo de la Zona 5 (oficina de Cornelius) + confirmación de Moni en diálogo | Press-X en el suelo de Zona 5; luego mostrar a Moni → prompt "¿Agregar como evidencia? [X]" | ✅ **Buena** | Barry |
 | F4 | Maleta hecha con ropa de mujer y dinero en efectivo | Escondida tras un saco de harina en la cocina | Registro físico de la cocina | ❌ **Mala** (red herring) | Moni (pero es solo su plan de escape, no relacionado con el crimen) |
 | F5 | Sobre quemado con fragmentos de contabilidad | Lavabo del baño de damas | Revisar el baño tras la conversación con Lola | ❌ **Mala** (red herring) | Lola (documentos de la demanda civil, sin relación con el asesinato) |
 
@@ -259,6 +261,6 @@ El jugador debe clasificar cada evidencia como **útil (buena)** o **descartable
 
 - Todos los NPCs hablan **solo en inglés** durante el juego
 - Limonchero y Gajito se comunican **solo en español**
-- Barry nunca confiesa sin las tres pruebas simultáneas: acuerdo del fideicomiso + llave maestra + evidencia de pólvora
+- Barry nunca confiesa sin las tres pruebas simultáneas: acuerdo del fideicomiso + llave maestra + encendedor de oro (identificado por Moni)
 - El jugador puede fallar acusando al sospechoso equivocado — Spud lo acepta y el caso cierra mal
 - Gajito puede ser ignorado — el jugador puede avanzar sin consultarlo

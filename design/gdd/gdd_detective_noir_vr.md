@@ -1,13 +1,14 @@
 # 🎮 Game Design Document (GDD)
-## "Detective Noir VR" — *Working Title*
+## "Detective Noir" — *Working Title*
 
-> **Estado:** Plantilla/Borrador  
-> **Versión:** 0.2  
-> **Fecha:** 6 de abril de 2026  
+> **Estado:** En revisión activa  
+> **Versión:** 0.3  
+> **Fecha:** 22 de abril de 2026  
 > **Equipo:** 4 integrantes — Ignacio Cuevas, Martin Cevallos, Sofia Meza, Diego Espinosa  
 > **Asignatura:** ICI5442 – Tecnologías Emergentes  
-> **Motor:** Godot 4 + OpenXR + XR Tools  
-> **Plataforma:** Meta Quest 2  
+> **Motor:** Godot 4  
+> **Plataforma:** PC (Windows / Linux)  
+> **Nota de versión:** v0.3 — migración de Meta Quest 2 VR a PC desktop por feedback de profesores. Removido OpenXR/XR Tools. Sistema de interacción con pistas rediseñado (press-X). R3 rediseñado (encendedor de oro).
 
 ---
 
@@ -20,14 +21,14 @@ Un juego de detectives en primera persona en Realidad Virtual donde el jugador i
 Noir / Detective / Misterio / Aventura narrativa
 
 ### 1.3. Plataforma
-- **Meta Quest 2** (standalone, proporcionado por la universidad)
+- **PC (Windows / Linux)** — teclado y mouse, o mando (controller)
 
 ### 1.4. Audiencia Objetivo
-- Jugadores de VR interesados en narrativa e inmersión
-- Personas que quieran practicar inglés en un contexto interactivo e inmersivo
+- Jugadores de PC interesados en narrativa, misterio e inmersión
+- Personas que quieran practicar inglés en un contexto interactivo con retroalimentación en tiempo real
 
 ### 1.5. Propuesta de Valor Única (USP)
-La primera experiencia VR noir donde cada interrogatorio es único gracias a IA generativa con voz, y además te enseña inglés de forma natural.
+El primer juego de detectives en PC donde el jugador realmente le habla a los sospechosos: cada interrogatorio es único gracias a IA conversacional (STT → LLM), los NPCs responden con texto y un balbuceo característico por personaje (estilo Animal Crossing), y el juego corrige tu inglés de forma natural mientras investigas.
 
 ### 1.6. Componente Educativo
 La interfaz general (menús, inventario) y la voz del ayudante están en **español**, pero el contenido core del juego está en **inglés**. 
@@ -48,25 +49,27 @@ Explorar escenario → Encontrar pistas → Interrogar sospechosos (voz) → For
 
 | Mecánica | Descripción | Prioridad |
 |----------|------------|-----------|
-| Exploración VR | Moverse por el escenario en primera persona | 🔴 Alta |
-| Recolección de pistas | Interactuar con objetos para recoger evidencia | 🔴 Alta |
-| Interrogatorio por voz | Hablar con NPCs usando micrófono; el NPC responde en **texto** vía LLM | 🔴 Alta |
-| Inventario de pistas | Sistema para revisar las pistas encontradas | 🟡 Media |
-| Acusación final | Presentar pruebas y nombrar al culpable al jefe | 🔴 Alta |
-| Asistente de inglés | LLM auxiliar para aprendizaje de inglés contextual | 🟡 Media |
-| `[Otra mecánica]` | `[TODO]` | `[TODO]` |
+| Exploración 3D | Moverse por el escenario en primera persona con WASD/mouse o joystick | 🔴 Alta |
+| Inspección de pistas (press-X) | Acercarse a un objeto → prompt "Presiona X" → modo inspección → pasa al inventario | 🔴 Alta |
+| Testimonios como evidencia | Durante diálogo con NPC, al decir una línea clave aparece prompt "¿Agregar como evidencia? [X]" | 🔴 Alta |
+| Interrogatorio por voz | Hablar con NPCs usando micrófono (PTT); el NPC responde en **texto** vía LLM acompañado de balbuceo característico | 🔴 Alta |
+| Menú contextual en NPCs | Presionar X cerca de un NPC despliega: Interrogar / Examinar | 🔴 Alta |
+| Inventario de pistas | Sistema para revisar pistas físicas y testimonios recolectados (tecla Tab) | 🟡 Media |
+| Acusación final | Presentar hasta 3 pruebas a Commissioner Spud en árbol de diálogo y nombrar al culpable | 🔴 Alta |
+| Asistente de inglés | Gajito evalúa el inglés del jugador (STT) y corrige errores en español vía pop-up | 🟡 Media |
 
-### 2.3. Controles VR (Meta Quest 2)
+### 2.3. Controles PC
 
-| Acción | Control Quest 2 |
-|--------|----------------|
-| Moverse | Joystick izquierdo (continuo) o teletransporte |
-| Girar vista | Joystick derecho (snap turn 45°) |
-| Agarrar objetos/pistas | Grip button (mano) |
-| Interactuar con NPC | Acercarse + Trigger button |
-| Hablar (STT) | Mantener presionado A/X o activación por proximidad |
-| Abrir inventario de pistas | Botón menú o gesto (mirar la muñeca) |
-| Llamar asistente de inglés | Automático (cuando el jugador comete un error) o botón Y/B |
+| Acción | Teclado / Mouse | Mando (Controller) |
+|--------|----------------|-------------------|
+| Moverse | WASD | Joystick izquierdo |
+| Girar vista | Mouse | Joystick derecho |
+| Interactuar / Inspeccionar (press-X) | E | Botón X (Xbox) / Cuadrado (PS) |
+| Menú contextual NPC | E (cerca de NPC) | X cerca de NPC |
+| Hablar (PTT — push to talk) | Mantener V | Mantener LB / L1 |
+| Abrir inventario de pistas | Tab | Botón Select / View |
+| Sprint | Shift | L3 (joystick izq. presionado) |
+| Pausa | Escape | Start / Menu |
 
 ### 2.4. Flujo de una Partida
 ```mermaid
@@ -209,12 +212,11 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 | # | Pista | Ubicación | Relevancia | Conecta con |
 |---|-------|-----------|-----------|-------------|
 | R1 | **El Acuerdo del Fideicomiso** — Documento rasgado y re-doblado que Barry debía firmar esa noche. Ceder el 40% de su empresa era una trampa | Reservado privado de Barry | 🔴 Alta | Barry (móvil) |
-| R2 | **La Llave Maestra** — Llave del piso de arriba encontrada en el bolsillo interior del saco de Barry | Saco de Barry (inspección directa) | 🔴 Alta | Barry (acceso a la oficina) |
-| R3 | **La Mancha de Pólvora** — Cubierta con talco en la muñeca derecha de Barry. Visible bajo luz UV | Muñeca de Barry | 🔴 Alta | Barry (disparó el arma) |
-| R4 | **El Testimonio de Moni** — Vio a alguien "con traje amarillo" subir las escaleras hacia el piso de arriba ~22:00 | Camerino / conversación con Moni | 🔴 Alta | Barry (lo ubica en el piso de arriba) |
-| R5 | **La Puerta Trasera** — Gerry abandonó su puesto 22 minutos. Alguien pudo entrar sin ser visto | Puerta trasera / testimonio de Gerry | 🟡 Media | Ruta alternativa de acceso |
-| R6 | **Las Manchas en las Manos de Barry** — Manchas oscuras que aparecen gradualmente en sus manos durante la noche | Observación directa de Barry | 🟡 Media | Barry (señal visual de culpa) |
-| R7 | **Los Documentos Quemados** — Ceniza en el baño de empleados. Lola quemó algo esa noche | Baño de empleados | 🟡 Media | Lola (actividad sospechosa, pero no el crimen) |
+| R2 | **La Llave Maestra** — Llave del piso de arriba encontrada en el bolsillo interior del saco de Barry | Guardarropa Zona 1, saco #14 (press-X en saco) | 🔴 Alta | Barry (acceso a la oficina) |
+| R3 | **El Encendedor de Oro** — Encendedor dorado hallado en el suelo de la oficina de Cornelius. Solo Moni lo reconoce como de Barry: *"That's Barry's lighter. He lit my cigarette with it at the start of the evening — I'd know it anywhere."* | Zona 5 suelo (press-X) + confirmado por Moni en diálogo (prompt "¿Agregar como evidencia? [X]") | 🔴 Alta | Barry (lo ubica en la escena del crimen) |
+| R4 | **El Testimonio de Moni** — Vio a alguien "con traje amarillo" subir las escaleras hacia el piso de arriba ~22:00 | Camerino / conversación con Moni (prompt "¿Agregar como evidencia? [X]") | 🔴 Alta | Barry (lo ubica en el piso de arriba) |
+| R5 | **La Puerta Trasera** — Gerry abandonó su puesto 22 minutos. Alguien pudo entrar sin ser visto | Puerta trasera / testimonio de Gerry (prompt "¿Agregar como evidencia? [X]") | 🟡 Media | Ruta alternativa de acceso |
+| R6 | **Los Documentos Quemados** — Ceniza en el baño de empleados. Lola quemó algo esa noche | Baño de empleados | 🟡 Media | Lola (actividad sospechosa, pero no el crimen) |
 
 #### Distractores
 
@@ -305,39 +307,36 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 
 ### 5.1. Diagrama de Arquitectura General
 ```
-┌──────────────────────────────────────────────────┐
-│              META QUEST 2                        │
-│  ┌────────────┐  ┌───────────┐  ┌────────────┐  │
-│  │ Godot 4    │  │ Micrófono │  │ Altavoces  │  │
-│  │ (OpenXR +  │  │  (Audio   │  │  (Audio    │  │
-│  │  XR Tools) │  │   input)  │  │   output)  │  │
-│  └─────┬──────┘  └─────┬─────┘  └─────▲──────┘  │
-│        │               │              │          │
-└────────┼───────────────┼──────────────┼──────────┘
-         │ WiFi          │              │
-    ┌────▼────────────────▼──────────────┴────┐
-    │         SERVIDOR LOCAL (PC equipo)      │
-    │              Python + FastAPI           │
-    │  ┌──────────┐ ┌────────┐ ┌───────────┐ │
-    │  │  Ollama   │ │Whisper │ │ Piper TTS │ │
-    │  │  (LLM)   │ │ (STT)  │ │  (voz)    │ │
-    │  └──────────┘ └────────┘ └───────────┘ │
-    └─────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────┐
+│                    PC DEL JUGADOR                      │
+│                                                        │
+│  ┌─────────────────────┐   ┌────────┐  ┌───────────┐  │
+│  │ Godot 4             │   │  Mic   │  │ Altavoces │  │
+│  │ (Motor 3D, Desktop) │   │ (PTT)  │  │  / Auricu │  │
+│  └──────────┬──────────┘   └───┬────┘  └─────▲─────┘  │
+│             │ localhost        │             │         │
+│  ┌──────────▼──────────────────▼─────────────┴──────┐  │
+│  │         SERVIDOR LOCAL (Python + FastAPI)        │  │
+│  │  ┌──────────┐    ┌──────────────┐  ┌──────────┐  │  │
+│  │  │  Ollama  │    │faster-whisper│  │Piper TTS │  │  │
+│  │  │  (LLM)   │    │   (STT)      │  │  (voz)   │  │  │
+│  │  └──────────┘    └──────────────┘  └──────────┘  │  │
+│  └─────────────────────────────────────────────────┘  │
+└────────────────────────────────────────────────────────┘
 ```
 
-> **Nota:** En la demo final, Ollama puede reemplazarse por OpenAI/Gemini API para mejor calidad.
+> **Nota:** Game y servidor corren en la misma máquina vía localhost. En la demo final, Ollama puede reemplazarse por OpenAI/Gemini API para mejor calidad.
 
 ### 5.2. Stack Tecnológico
 
 | Componente | Tecnología | Notas |
 |------------|-----------|-------|
-| Motor 3D | Godot 4 + OpenXR + XR Tools | Open-source, soporte nativo OpenXR |
-| VR Framework | Meta Quest (OpenXR) | Locomoción, manos, interacciones vía OpenXR |
-| Quest 2 Export | Android Export Template (Godot) | APK nativo para Quest 2 |
+| Motor 3D | Godot 4 | Open-source, export nativo a Windows/Linux |
+| PC Export | Windows / Linux Export Template (Godot) | Build desktop nativo |
 | LLM (dev) | Ollama (llama3 / mistral / gemma) | Local, gratuito, sin internet |
 | LLM (producción) | OpenAI GPT-4o-mini o Gemini Flash | Mejor calidad para demo |
 | Speech-to-Text | faster-whisper (local) | Modelo `medium` o `large-v3` |
-| Text-to-Speech | Piper TTS (local) | Voces en español, gratuito, offline |
+| Balbuceo NPC | Audio clips procedurales en Godot | Un clip corto por NPC; tono y velocidad únicos por personaje (estilo Animal Crossing/Sims) |
 | Backend | Python + FastAPI | Servidor local, proxy entre Godot y IA |
 | Comunicación | HTTP/WebSocket (WiFi local) | Quest 2 ↔ PC en misma red |
 | Assets 3D | Godot Asset Library / Kenney.nl / itch.io | Estilo visual `[TODO: definir]` |
@@ -346,49 +345,51 @@ Ciudad ficticia estadounidense de estilo años 50 — noches lluviosas, jazz, ne
 
 ### 5.3. Pipeline de Interrogatorio (Flujo Técnico)
 ```
-1. Jugador presiona botón en Quest 2 → se activa micrófono
-2. Audio capturado → enviado por WiFi al servidor local
+1. Jugador mantiene V (teclado) / LB (mando) → se activa micrófono (PTT)
+2. Audio capturado por AudioEffectCapture → enviado por localhost al servidor
 3. Servidor: Audio → faster-whisper (STT) → texto del jugador
 4. Texto + historial + System Prompt del NPC → Ollama/LLM
-5. Respuesta del LLM (texto) → enviada de vuelta al Quest 2 por WiFi
-6. Godot muestra el texto del NPC en panel world-space (subtítulos)
-7. (Paralelo) El mismo texto del jugador es evaluado por el LLM Asistente
-8. Si hay errores gramaticales → Gajito interviene con corrección en español
+5. Respuesta del LLM (texto) → enviada de vuelta a Godot por localhost
+6. Godot muestra el texto del NPC letra a letra en subtítulos HUD
+7. (Simultáneo al paso 6) Godot reproduce el clip de balbuceo del NPC sincronizado con la velocidad del texto
+8. (Paralelo) El mismo texto del jugador es evaluado por el LLM Asistente
+9. Si hay errores gramaticales → Gajito interviene con corrección en español (pop-up esquina inf. izq.)
 ```
 
 ### 5.4. Estructura del Proyecto Godot
 ```
-DetectiveNoirVR/
+DetectiveNoir/
 ├── scenes/
 │   ├── main_menu.tscn
 │   └── el_agave_y_la_luna.tscn   # Escenario único: El Agave y La Luna
 ├── scripts/
 │   ├── core/
-│   │   ├── game_manager.gd      # Estado del juego, pistas, progreso
+│   │   ├── game_manager.gd      # Estado del juego, pistas, progreso (autoload)
 │   │   └── scene_loader.gd      # Navegación entre escenas
+│   ├── player/
+│   │   ├── player_controller.gd # CharacterBody3D + Camera3D, WASD/mouse
+│   │   └── interaction_system.gd# Detección proximidad (Area3D) + press-X
 │   ├── npc/
 │   │   ├── npc_controller.gd    # Lógica de NPC + comunicación con LLM
 │   │   └── dialogue_history.gd  # Historial de conversación
 │   ├── clues/
-│   │   ├── clue_interactable.gd # Objeto pista interactuable
-│   │   └── inventory_system.gd  # Inventario de pistas
-│   ├── ai/
-│   │   ├── llm_client.gd        # HTTP requests al backend FastAPI
-│   │   ├── voice_manager.gd     # Grabación audio, envío STT, recepción TTS
-│   │   └── english_assistant.gd # Asistente de aprendizaje de inglés
-│   └── vr/
-│       ├── vr_locomotion.gd     # Teletransporte + movimiento continuo
-│       └── hand_interaction.gd  # Interacciones con manos
+│   │   ├── clue_interactable.gd # Objeto pista interactuable (press-X → inventario)
+│   │   └── inventory_system.gd  # Inventario de pistas (físicas + testimonios)
+│   ├── ui/
+│   │   ├── hud.gd               # Subtítulos, indicador PTT, pop-up Gajito
+│   │   └── inspect_overlay.gd   # Modo inspección (SubViewport o overlay)
+│   └── ai/
+│       ├── llm_client.gd        # HTTP requests al backend FastAPI (localhost)
+│       ├── voice_manager.gd     # AudioEffectCapture → WAV → servidor STT
+│       └── english_assistant.gd # Asistente de aprendizaje de inglés
 ├── assets/
 │   ├── models/                  # Modelos 3D (.glb/.gltf)
 │   ├── materials/               # Materiales y shaders
 │   ├── textures/                # Texturas
 │   ├── audio/                   # SFX y música
 │   └── fonts/                   # Fuentes
-├── addons/
-│   └── godot-xr-tools/          # Plugin XR Tools para Godot
-├── export_presets.cfg           # Configuración export Android (Quest 2)
-└── builds/                      # APKs para Quest 2
+├── export_presets.cfg           # Configuración export Windows/Linux
+└── builds/                      # Ejecutables PC
 ```
 
 ---
@@ -417,35 +418,41 @@ DetectiveNoirVR/
 ### 7.2. Efectos de Sonido
 `[TODO: Lista. Ej: pasos, lluvia, puertas chirriantes, sirenas lejanas, máquina de escribir, encendedor]`
 
-### 7.3. Voces (TTS - Piper)
-| NPC | Estilo de voz | Modelo Piper |
-|-----|--------------|-------------|
-| Jefe | Grave, autoritario | `[TODO: seleccionar voz es_MX o es_ES]` |
-| Sospechoso 1 | `[TODO]` | `[TODO]` |
-| Sospechoso 2 | `[TODO]` | `[TODO]` |
-| Sospechoso 3 | `[TODO]` | `[TODO]` |
-| Asistente inglés | Amigable, claro, bilingüe | `[TODO]` |
+### 7.3. Balbuceo de NPCs (estilo Animal Crossing / Los Sims)
+Los NPCs no tienen voz sintetizada. Cada uno tiene un **clip de balbuceo corto** que se reproduce en bucle sincronizado con la velocidad de aparición del texto. El carácter del personaje se comunica por el tono, velocidad y timbre del balbuceo, no por palabras.
+
+| NPC | Estilo de balbuceo | Tono | Velocidad |
+|-----|-------------------|------|-----------|
+| Commissioner Spud | Grave, seco, interrumpe frases | Bajo | Rápida, impaciente |
+| Moni Graná Fert | Suave, cadencioso, pausas largas | Medio-alto | Lenta, deliberada |
+| Gerald "Gerry" Broccolini | Monosilábico, gruñidos cortos | Muy bajo | Muy lenta |
+| Dolores "Lola" Persimmon | Parlanchín, tono de secretaria eficiente | Medio | Rápida, nerviosa |
+| Bartholomew "Barry" Peel | Sereno, claro, sin muletillas | Medio | Pausada, controlada |
+| Gajito | Energético, saltarín, se acelera cuando está nervioso | Agudo | Variable |
 
 ---
 
-## 8. UI/UX en VR
+## 8. UI/UX en PC
 
-### 8.1. Principios de Diseño VR
-- Toda la UI debe ser **diegética** (integrada en el mundo 3D) siempre que sea posible
-- Evitar movimientos bruscos de cámara (anti motion-sickness)
-- Interacciones naturales con las manos (hand tracking o controllers)
-- Snap turn en lugar de giro suave por defecto
+### 8.1. Principios de Diseño PC
+- UI principal como **HUD 2D** superpuesta al juego 3D — legible, no obstructiva
+- Texto de subtítulos y diálogos con contraste suficiente sobre escenas oscuras (noir)
+- El tablón de pistas diegético (en pared del juego) se complementa con vista de **inventario Tab** para legibilidad en pantalla plana
+- Feedback explícito en todas las acciones: el jugador siempre sabe qué tiene y qué pasó
+- Opciones de accesibilidad: FOV ajustable (70–110°), tamaño de subtítulos
 
 ### 8.2. Elementos de UI
 
 | Elemento | Tipo | Descripción |
 |----------|------|-------------|
-| Tablón de pistas | Diegético (en pared) | Pistas recopiladas como fotos/notas |
-| Indicador de NPC | Diegético | Ícono sutil sobre NPC cuando puedes hablar |
-| Subtítulos | Panel world-space | Lo que dice el NPC y lo que dijiste tú |
-| Asistente de inglés | Panel en muñeca o pop-up | Traducciones y vocabulario |
-| Menú de pausa | Panel world-space | Opciones, salir, volumen |
-| Indicador de grabación | HUD mínimo | Muestra cuando el micrófono está activo |
+| Tablón de pistas | Diegético (pared) + Tab para vista completa | Pistas recopiladas como fotos/notas en pared del mundo; Tab abre vista de inventario legible |
+| Indicador de NPC | Diegético | Ícono sutil sobre NPC cuando puedes interactuar |
+| Menú contextual NPC | HUD overlay | Al presionar E/X cerca de NPC: opciones "Interrogar / Examinar" |
+| Subtítulos | HUD inferior | Lo que dice el NPC (canal izq.) y lo que dijiste tú (canal der.) |
+| Modo inspección | Overlay centrado | Objeto mostrado en pantalla al inspeccionarlo; botón de cierre (Esc/B) visible |
+| Asistente de inglés (Gajito) | Pop-up esquina inf. izq. | Correcciones gramaticales en español; desaparece solo tras unos segundos |
+| Indicador de grabación (PTT) | HUD superior | Pulso/color mientras el micrófono está activo; "Gajito está pensando…" mientras espera respuesta |
+| Menú de pausa | Overlay centrado | Opciones, salir, volumen, FOV |
 
 ### 8.3. Mockups
 `[TODO: Insertar mockups de las vistas principales]`
@@ -458,26 +465,26 @@ DetectiveNoirVR/
 
 | ID | Requisito | Prioridad |
 |----|-----------|-----------|
-| RF-01 | El jugador puede moverse por el escenario VR (teletransporte y/o continuo) | 🔴 Alta |
-| RF-02 | El jugador puede recoger e inspeccionar pistas con las manos | 🔴 Alta |
-| RF-03 | El jugador puede hablar con NPCs usando su voz (micrófono del Quest 2) | 🔴 Alta |
-| RF-04 | Los NPCs responden en **inglés** con personalidad única vía LLM, mostrando el texto en un panel world-space | 🔴 Alta |
-| RF-05 | El asistente Gajito evalúa el inglés del jugador (STT) y corrige errores gramaticales en español | 🔴 Alta |
-| RF-06 | El jugador puede acusar a un sospechoso ante el jefe | 🔴 Alta |
-| RF-07 | Existe un asistente LLM para ayuda con aprendizaje de inglés | 🟡 Media |
-| RF-08 | El jugador posee un inventario de pistas visible en VR | 🟡 Media |
-| RF-09 | Se muestran subtítulos de la conversación | 🟡 Media |
-| RF-10 | `[TODO]` | `[TODO]` |
+| RF-01 | El jugador puede navegar todas las zonas accesibles de "El Agave y La Luna" con WASD/mouse o joystick | 🔴 Alta |
+| RF-02 | El jugador puede inspeccionar y recoger pistas físicas con press-X (E/X); los testimonios se recopilan vía prompt "¿Agregar como evidencia? [X]" durante el diálogo | 🔴 Alta |
+| RF-03 | El jugador puede hablar con NPCs usando su voz (micrófono PC, PTT con tecla V o LB) | 🔴 Alta |
+| RF-04 | Los NPCs responden en **inglés** con personalidad única vía LLM, mostrando el texto en subtítulos HUD | 🔴 Alta |
+| RF-05 | El asistente Gajito evalúa el inglés del jugador (STT) y corrige errores gramaticales en español vía pop-up | 🔴 Alta |
+| RF-06 | El jugador puede acusar a un sospechoso ante Commissioner Spud presentando hasta 3 pruebas en árbol de diálogo | 🔴 Alta |
+| RF-07 | Existe un asistente LLM (Gajito) para ayuda con aprendizaje de inglés contextual | 🟡 Media |
+| RF-08 | El jugador posee un inventario de pistas accesible con Tab, que distingue pistas físicas de testimonios | 🟡 Media |
+| RF-09 | Se muestran subtítulos de la conversación en dos canales (NPC / jugador) | 🟡 Media |
+| RF-10 | Al presionar E/X cerca de un NPC se despliega menú contextual: Interrogar / Examinar | 🔴 Alta |
 
 ### 9.2. Requisitos No Funcionales
 
 | ID | Requisito | Métrica |
 |----|-----------|---------|
-| RNF-01 | El juego debe mantener mínimo 72 FPS en Quest 2 | ≥ 72 FPS |
-| RNF-02 | La latencia STT + LLM + TTS debe ser aceptable | < 5s end-to-end |
-| RNF-03 | El juego funciona conectado a un PC local vía WiFi | Red local requerida |
+| RNF-01 | El juego debe mantener mínimo 60 FPS en PC de especificación mínima (i5-8400 / GTX 1060 equiv., 8GB RAM, 1080p) | ≥ 60 FPS sostenidos |
+| RNF-02 | La latencia STT + LLM debe ser aceptable (sin TTS — el balbuceo es local e instantáneo) | < 4s end-to-end (medido en localhost) |
+| RNF-03 | El servidor AI (Python/FastAPI) corre en localhost en la misma máquina que el juego; el juego detecta si el servidor no está disponible y muestra error accionable al inicio | Detección en startup; no crash |
 | RNF-04 | El STT debe reconocer **inglés** (con acento latino) con buena precisión | > 85% accuracy |
-| RNF-05 | La app no debe producir mareos (motion sickness) | Evaluación subjetiva |
+| RNF-05 | El juego debe incluir opción de FOV ajustable en el menú de opciones | Slider FOV 70–110° presente y funcional |
 | RNF-06 | `[TODO]` | `[TODO]` |
 
 ---

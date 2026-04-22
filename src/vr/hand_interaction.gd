@@ -76,13 +76,12 @@ func _on_button_released(button_name: String) -> void:
 
 # ============================================================
 func _try_grab() -> void:
-	if _highlighted_object and _highlighted_object.has_method("on_grip_pressed"):
-		_highlighted_object.on_grip_pressed()
+	if _highlighted_object and InteractionSystem.try_interact(_highlighted_object):
 		object_grabbed.emit(_highlighted_object)
 
 func _try_interact() -> void:
-	if _highlighted_object and _highlighted_object.has_method("start_dialogue"):
-		_highlighted_object.start_dialogue()
+	if _highlighted_object:
+		InteractionSystem.try_start_dialogue(_highlighted_object)
 
 func _try_start_voice() -> void:
 	# TODO: Obtener el NPC activo y su historial desde GameManager/escena

@@ -1,0 +1,264 @@
+# Entity Registry — Limonchero 3D
+# Fuente autoritativa de entidades cross-document.
+# Actualizar aquí cuando cambie un valor en un GDD.
+# Formato: source = documento GDD que define el valor.
+
+---
+
+# ─────────────────────────────────────────────
+# PERSONAJES
+# ─────────────────────────────────────────────
+
+entities:
+
+  - name: Limonchero
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: limón amarillo grande
+      rol: detective protagonista (jugador)
+      idioma: español
+      ingles: false
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: Gajito
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: limón de pica (key lime)
+      rol: asistente / traductor
+      idioma: español + inglés
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: Barry Peel
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: plátano
+      edad: 34
+      culpable: true
+      idioma: solo inglés
+      coartada: reservado toda la noche
+      hueco_temporal: subió al piso de arriba ~22:00
+      confesion_gate: F1+F2+F3 GOOD simultáneos
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: Moni Graná Fert
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: granada
+      edad: 29
+      culpable: false
+      idioma: solo inglés
+      coartada: camerino 9:45–10:30 PM
+      hueco_temporal: ~20 minutos sin verificar
+      prop: cigarrillo con boquilla (fumadora)
+      relacion_con_F3: reconoce el encendedor de Barry — él le prendió el cigarrillo al inicio de la noche
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: Gerald Broccolini
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: brócoli
+      edad: 44
+      culpable: false
+      idioma: solo inglés
+      coartada: baño
+      hueco_temporal: 22 minutos sin verificar
+      crack_condition: F2 en inventario
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: Dolores Persimmon
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: caqui
+      edad: 51
+      culpable: false
+      idioma: solo inglés
+      coartada: oficina contable
+      hueco_temporal: 9:47–10:12 PM sin explicar
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: Commissioner Wallace Spud
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: papa
+      edad: 58
+      rol: tutor tutorial + presión del reloj
+      idioma: solo inglés
+      sospechoso_favorito: Gerry
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: Cornelius Maize
+    type: character
+    source: design/narrative/cast-bible.md
+    attributes:
+      fruta: mazorca de maíz
+      edad: 61
+      estado: muerto al inicio
+      causa_muerte: disparo en la oficina del piso de arriba
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/levels/el_agave_y_la_luna.md
+
+# ─────────────────────────────────────────────
+# EVIDENCIAS FÍSICAS
+# ─────────────────────────────────────────────
+
+items:
+
+  - name: F1 / Acuerdo del Fideicomiso
+    type: evidence_physical
+    source: design/levels/el_agave_y_la_luna.md
+    attributes:
+      ubicacion: reservado privado de Barry, Zona 2
+      como_se_obtiene: press-X en mesa bajo el vaso de bourbon
+      status: BUENA
+      implica_a: Barry (móvil)
+      requerido_para_confesion: true
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/narrative/cast-bible.md
+
+  - name: F2 / Llave Maestra
+    type: evidence_physical
+    source: design/levels/el_agave_y_la_luna.md
+    attributes:
+      ubicacion: guardarropa Zona 1, saco #14
+      como_se_obtiene: cadena 5 pasos — cenicero → talón → abrigo #14 → revisar bolsillos → F2
+      status: BUENA
+      implica_a: Barry (acceso a la oficina)
+      requerido_para_confesion: true
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+      - design/narrative/cast-bible.md
+
+  - name: F3 / Encendedor de Oro
+    type: evidence_physical
+    source: design/gdd/gdd_detective_noir_vr.md
+    revised: 2026-04-22
+    # was: Mancha de pólvora visible bajo UV wand (antes de v0.3)
+    attributes:
+      ubicacion: suelo Zona 5 (oficina de Cornelius), junto al escritorio
+      como_se_obtiene: press-X en suelo Zona 5 → inventario como "dueño desconocido"; confirmado como de Barry al mostrárselo a Moni
+      testigo_clave: Moni Graná Fert (la única que lo reconoce)
+      status: BUENA
+      implica_a: Barry (lo ubica en la escena del crimen)
+      requerido_para_confesion: true
+    referenced_by:
+      - design/narrative/cast-bible.md
+      - design/levels/el_agave_y_la_luna.md
+
+  - name: F4 / Maleta de Moni
+    type: evidence_physical
+    source: design/levels/el_agave_y_la_luna.md
+    attributes:
+      ubicacion: Zona 3, bodega, detrás de sacos de harina
+      status: MALA (red herring)
+      implica_a: Moni (plan de escape, no crimen)
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+
+  - name: F5 / Sobre Quemado
+    type: evidence_physical
+    source: design/levels/el_agave_y_la_luna.md
+    attributes:
+      ubicacion: baño de empleados, Zona 3
+      status: MALA (red herring)
+      implica_a: Lola (documentos de demanda civil)
+    referenced_by:
+      - design/gdd/gdd_detective_noir_vr.md
+
+# ─────────────────────────────────────────────
+# EVIDENCIAS TESTIMONIALES
+# ─────────────────────────────────────────────
+
+  - name: T1 / Informe Preliminar NFPD
+    type: evidence_testimony
+    source: design/levels/el_agave_y_la_luna.md
+    attributes:
+      de_quien: Commissioner Spud (tutorial)
+      como_se_obtiene: entregado automáticamente al inicio
+      status: BUENA (contextual)
+      efecto: habilita la investigación; descarta intrusión externa
+
+  - name: T2 / Testimonio Moni — Traje Amarillo
+    type: evidence_testimony
+    source: design/levels/el_agave_y_la_luna.md
+    attributes:
+      de_quien: Moni Graná Fert
+      como_se_obtiene: preguntar por movimientos cerca del piso superior; prompt "¿Agregar como evidencia? [X]"
+      gate: ninguno (ungated)
+      status: BUENA
+      implica_a: Barry (único NPC con traje amarillo)
+
+  - name: T3 / Admisión Gerry — Puerta Trasera
+    type: evidence_testimony
+    source: design/levels/el_agave_y_la_luna.md
+    attributes:
+      de_quien: Gerald Broccolini
+      como_se_obtiene: preguntar directamente por la puerta trasera; prompt "¿Agregar como evidencia? [X]"
+      gate: F2 en inventario
+      status: BUENA
+
+# ─────────────────────────────────────────────
+# SISTEMAS / CONSTANTES
+# ─────────────────────────────────────────────
+
+constants:
+
+  - name: confesion_gate
+    source: design/levels/el_agave_y_la_luna.md
+    value: "F1+F2+F3 marcados GOOD en inventario + Barry nombrado como acusado"
+    nota: "F1=acuerdo fideicomiso, F2=llave maestra, F3=encendedor de oro identificado por Moni"
+
+  - name: inventory_slots
+    source: design/levels/el_agave_y_la_luna.md
+    value: 8
+    unit: slots para evidencia física
+    safe_range: "6–10"
+
+  - name: anti_stall_L1
+    source: design/levels/el_agave_y_la_luna.md
+    value: 4
+    unit: minutos sin adquisición
+
+  - name: anti_stall_L2
+    source: design/levels/el_agave_y_la_luna.md
+    value: 5
+    unit: minutos sin adquisición
+
+  - name: anti_stall_L3
+    source: design/levels/el_agave_y_la_luna.md
+    value: 7
+    unit: minutos sin adquisición
+
+  - name: llm_timeout
+    source: design/levels/el_agave_y_la_luna.md
+    value: 8
+    unit: segundos
+    nota: "timeout de respuesta LLM por NPC; pipeline STT→LLM <5s end-to-end"
+
+  - name: stt_latency_budget
+    source: design/gdd/gdd_detective_noir_vr.md
+    value: 4
+    unit: segundos end-to-end
+    nota: "sin TTS — balbuceo es local e instantáneo"

@@ -24,6 +24,11 @@ func _ready() -> void:
 # ============================================================
 # Llamar desde el script de manos XR cuando Grip sea presionado
 # ============================================================
+## Punto de entrada público para el sistema de interacción.
+## Llama a on_grip_pressed() internamente para mantener compatibilidad.
+func interact() -> void:
+	on_grip_pressed()
+
 func on_grip_pressed() -> void:
 	if _is_collected:
 		return

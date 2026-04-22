@@ -1,9 +1,9 @@
 # Level Design Document — El Agave y La Luna
-**Juego:** Limonchero 3D (Detective Noir VR)
-**Versión:** 1.0
-**Fecha:** 2026-04-21
-**Estado:** En revisión — segunda revisión 2026-04-21 (12 bloqueantes resueltos, ver §9 para deuda de accesibilidad pendiente en Fase 2)
-**Plataforma:** Meta Quest 2 · Godot 4 · OpenXR
+**Juego:** Limonchero 3D (Detective Noir)
+**Versión:** 1.1
+**Fecha:** 2026-04-22
+**Estado:** En revisión — v1.1 actualiza plataforma VR→PC, reemplaza F3 UV wand por Encendedor de Oro, elimina stain progression.
+**Plataforma:** PC (Windows/Linux) · Godot 4 · Controller / Mouse+Teclado
 
 ---
 
@@ -62,9 +62,9 @@ Barry entró al club por la bodega → pasillo de servicio → escalera trasera 
 **Visual:** Tiles hexagonales crema `#E8DFC8` / negro-cálido `#1E1810`. Paneles de madera oscura `#2A1B0E`. Candelabro asimétrico `#F5DFA0`. Techo de lata prensada `#7A6040`. El neón verde exterior `#8BC34A` entra por las puertas — se deposita como `#5A7A2E` en superficies interiores.
 
 **Interacciones:**
-1. Levantar cenicero con grip → revela talón
-2. Agarrar talón → entra al inventario automáticamente
-3. Encontrar abrigo #14 en el perchero → insertar mano en bolsillo → aparece llave → agarrar → F2 adquirido
+1. Press-X en cenicero → revela talón debajo
+2. Press-X en talón → entra al inventario automáticamente
+3. Encontrar abrigo #14 en el perchero → press-X en abrigo → prompt "Revisar bolsillos" → llave aparece → F2 adquirido
 
 **Restricción de arte:** El neón no toca el suelo aquí. Solo en superficies verticales.
 
@@ -90,7 +90,7 @@ Barry entró al club por la bodega → pasillo de servicio → escalera trasera 
 | NPC | Posición | Fondo garantizado |
 |-----|----------|------------------|
 | Barry Peel | Reservado NW, sentado interior | Papel tapiz verde oscuro `#2E4A1E` — 30%+ más oscuro que su amarillo `#F5D020` ✅ |
-| Moni Graná Fert | Mesa este (segunda desde el escenario), lámpara de mesa ámbar | — |
+| Moni Graná Fert | Mesa este (segunda desde el escenario), lámpara de mesa ámbar, cenicero con boquilla y cigarrillo a medio fumar | Cenicero establece su hábito — clave para que el jugador sepa a quién preguntar por el encendedor |
 | Lola Persimmon | Mesa centro-sur (más cercana a la pista de baile) | — |
 | Gerry Broccolini | Pared oeste junto a la barra | Estanterías retroiluminadas → rim light garantizado ✅ |
 | Gajito | Siempre junto al jugador | — |
@@ -134,7 +134,7 @@ Barry entró al club por la bodega → pasillo de servicio → escalera trasera 
 - Colilla de palillo de canela junto a la base de la escalera
 - Escalera al norte (madera sin alfombrar, pasamanos metálico, gira en el rellano)
 
-**Locomotión:** Continua (joystick). La luz de la escalera es visible desde la entrada del pasillo — pull visual para mantener la navegación activa.
+**Locomotión:** WASD o joystick izquierdo. La luz de la escalera es visible desde la entrada del pasillo — pull visual para mantener la navegación activa.
 
 **Audio:** Silencio total excepto por goteo de tuberías. Gajito permanece callado aquí a menos que el jugador lo consulte. Su silencio es una señal tonal.
 
@@ -154,11 +154,11 @@ Barry entró al club por la bodega → pasillo de servicio → escalera trasera 
 - Contorno de polvo rectangular en el escritorio (donde Barry recogió F1 de arriba)
 - Ventana lateral (oeste): abierta, pestillo girado a "cerrado desde dentro" (alguien conocía el mecanismo de moneda)
 - **Puerta secundaria** (oeste): comunica con corredor de Zona 6. Cerrojo de latón en la cara interior (Zona 5), actualmente desbloqueado — abre empujando desde Zona 5 hacia el corredor. Sin manija en el lado de Zona 6; solo el ojo de la cerradura es visible desde el corredor.
-- Residuo UV en la superficie del escritorio (recompensa de uso del UV wand)
+- **Encendedor de oro (F3)** — en el suelo junto al escritorio, semioculto bajo el borde de la alfombra. Press-X → inventario como "Encendedor de oro (dueño desconocido)". Solo se confirma como de Barry al mostrárselo a Moni.
 
 **Visual:** Lámpara volcada como única fuente de luz a ángulo inusual. Sin neón exterior (zona sellada). Temperatura fría-neutra. La oficina es burocracia hecha espacio físico — archivadores, documentos, framed newspaper en la pared.
 
-**Huellas:** Barry dejó dos juegos de huellas en el rellano (ida y vuelta). Visibles con UV.
+**Huellas:** Barry dejó dos juegos de huellas en el rellano (ida y vuelta).
 
 ---
 
@@ -189,7 +189,7 @@ Barry entró al club por la bodega → pasillo de servicio → escalera trasera 
 
 **Capacidad:** 8 slots para pistas físicas. Log ilimitado (scrollable) para testimonios.
 
-**Adquirir una pista:** Al agarrar el objeto físico (o al completar el UV scan), la pista se auto-fotografía en el siguiente slot disponible. La libreta abre automáticamente 3 segundos y luego cierra.
+**Adquirir una pista:** Al presionar X sobre el objeto (o al confirmar un testimonio con el prompt "¿Agregar como evidencia? [X]"), la pista se auto-fotografía en el siguiente slot disponible. El inventario (Tab) se abre automáticamente 3 segundos y luego cierra.
 
 **Estructura de cada slot:**
 ```
@@ -203,7 +203,7 @@ Barry entró al club por la bodega → pasillo de servicio → escalera trasera 
 │  [ BUENA ]    [ MALA ]     │
 └────────────────────────────┘
 ```
-Sellos con haptic (60ms, 0.8 intensidad). Reversibles — el último sello activo es el que cuenta.
+Sellos reversibles — el último sello activo es el que cuenta.
 
 **Gate de acusación:**
 | Condición | Resultado |
@@ -215,63 +215,22 @@ Sellos con haptic (60ms, 0.8 intensidad). Reversibles — el último sello activ
 
 **Orden de evaluación:** F1+F2+F3 GOOD se comprueba primero; si se cumple, el estado de F4/F5 no afecta el resultado. El jugador puede acusar en cualquier momento — no hay gate de bloqueo previo.
 
-### 5.2 Progresión de Manchas de Barry
+### 5.2 Cadena de Interacción — Llave Maestra (F2)
 
-Gateado por **milestones de investigación**, no por tiempo real.
-
-| Estado | Trigger | Visual sin UV | Visual con UV | Hold requerido |
-|---|---|---|---|---|
-| 0 | Inicio | Nada | Nada | — |
-| 1 | F1 adquirido | Nada | Rastro tenue | 3s |
-| 2 | F2 adquirido O Zona 5 visitada | Oscurecimiento difuso a <0.5m — ambiguo | Residuo claro | 1.5s |
-| 3 | F1+F2+Zona5 todos | Oscurecimiento difuso en manos visible a cualquier distancia — no identificable como pólvora sin UV | Residuo brillante claro | 0.5s |
-
-**Nota de diseño (stain system):** El oscurecimiento de los estados 2 y 3 debe leerse como "algo en esas manos" — no como culpabilidad. El material del shader usa un tono gris-carbón neutro (`#3A3530`), no rojo ni brillante. La pólvora solo es confirmada como tal mediante el escaneo UV (F3). El jugador que observa el estado 3 debe sospechar, no saber. Sin bloom en ningún estado.
-
-### 5.3 Cadena de Interacción — Llave Maestra (F2)
-
-1. Levantar cenicero (grip) → revela talón
-2. Agarrar talón → inventario automático. Gajito: *"Un talón del guardarropa. Número 14."*
+1. Press-X en cenicero → revela talón debajo
+2. Press-X en talón → inventario automático. Gajito: *"Un talón del guardarropa. Número 14."*
 3. Localizar abrigo #14 en el perchero (gancho de latón numerado)
-4. Agarrar abrigo #14. Gajito: *"Ese es. Revisa los bolsillos."*
-5. Insertar mano en el collider del bolsillo → haptic (100ms, 1.0) → llave aparece
-6. Sacar la mano → llave viene con ella → agarrar → F2 adquirido
-7. Gajito: *"Una llave maestra. La pregunta es para qué la tenía."*
+4. Press-X en abrigo #14. Gajito: *"Ese es. Revisa los bolsillos."*
+5. Prompt "Revisar bolsillos [X]" → llave aparece → F2 adquirido
+6. Gajito: *"Una llave maestra. La pregunta es para qué la tenía."*
 
 **Puertas que abre:**
 - Puerta de la escalera principal del salón (ruta alternativa a Zona 5)
 - Puerta principal de la oficina de Cornelius (segunda visita)
 
-**Mecánica de uso:** Grip + acercar llave al keyhole → contorno brillante aparece a <0.5m → insertar controlador en el collider → clic + puerta abre. La llave no se consume.
+**Mecánica de uso:** Acercar F2 al keyhole con E/X → contorno brillante a <0.5m → confirmar → puerta abre. La llave no se consume.
 
-### 5.4 UV Wand
-
-**Disponibilidad:** Gajito la ofrece al entrar al salón por primera vez. Si el jugador la ignora 30s, Gajito dice: *"Puede que necesites esto para lo que el ojo no ve."* No hay límite de tiempo.
-
-**Activación:** Hold del trigger derecho (no toggle — requiere mantener presionado).
-
-*Nota: cambio a toggle está en la lista de mejoras de accesibilidad (ACC-03).*
-
-**Mecánica de escaneo:**
-- Cono: 25° de ángulo, 1.5m de alcance
-- Arc de progreso visible en la superficie objetivo
-- Si el beam se rompe antes del threshold → arc reinicia a 0%
-- Al completar: haptic (80ms, 0.9) + sonido de adquisición
-
-**Tolerancia de ruptura:** El beam admite una desviación de hasta 5° del ángulo de apuntado original antes de considerarse ruptura (margen para temblor natural de mano). Si el beam se rompe, hay un grace period de 500ms antes de que el arc reinicie — un reajuste rápido dentro de esa ventana restaura el progreso. Si Barry se desplaza más de 15cm mid-scan por animación idle, el collider de la muñeca lo sigue y el arc reinicia normalmente.
-
-**Condición de crack de Barry (timing):** La evaluación F1+F2+F3 GOOD se realiza **al iniciar la sesión de interrogatorio** (inyección en el system prompt). Si el jugador marca F3 GOOD durante una sesión activa con Barry, el crack no se activa en ese turno — debe cerrar el interrogatorio, asegurarse de que los stamps estén correctos en la libreta, y re-iniciar la sesión.
-
-**Qué revela:**
-| Superficie | Resultado |
-|---|---|
-| Muñeca derecha de Barry (estado 1) | Rastro bajo UV, hold 3s → F3 |
-| Muñeca derecha de Barry (estado 2) | Residuo claro, hold 1.5s → F3 |
-| Muñeca derecha de Barry (estado 3) | Bloom brillante, hold 0.5s → F3 |
-| Escritorio de Cornelius | Residuo ambiental. Gajito: *"Algo en ese escritorio. No es papel ordinario."* No adquiere pista. |
-| F5 (ceniza) | Gajito: *"El mismo residuo. Alguien quemó algo aquí apresuradamente."* No cambia estado de F5. |
-
-### 5.5 Dificultad de Interrogatorios
+### 5.4 Dificultad de Interrogatorios
 
 | NPC | Resistencia | Condición de crack |
 |---|---|---|
@@ -292,7 +251,7 @@ El LLM de cada NPC recibe dos variables en el system prompt antes de cada sesió
 | Moni da T2 ("traje amarillo") y el jugador no ha visitado Zona 5 | *"Un traje amarillo subiendo. Solo uno de los invitados usa traje amarillo esta noche — y aún no hemos visto ese piso de arriba."* | 1 vez total |
 | Interrogando a Barry sin evidencia completa | *"No tenemos todo todavía, jefe. Está muy calmado. Necesitamos más."* | 1 vez por sesión |
 
-### 5.6 Sistema Anti-Estancamiento
+### 5.5 Sistema Anti-Estancamiento
 
 Si pasan X minutos sin nueva adquisición, el timer escala. **Una "adquisición" se define como:** recoger un objeto físico, completar un escaneo UV, recibir un testimonio de un NPC (texto registrado en el log), o visitar una zona por primera vez. El timer se reinicia con cualquiera de estos eventos.
 
@@ -330,14 +289,14 @@ El timer se reinicia con cualquier nueva adquisición. No hay escalada más all�
 
 | Sistema | Dependencia |
 |---|---|
-| F3 (residuo de pólvora) | Gajito presente en la escena con UV wand |
+| F3 (encendedor de oro) | Press-X en Zona 5 + mostrar encendedor a Moni en diálogo |
 | T2 (testimonio de Moni) | Ninguna (ungated — ver §5.5) |
 | T3 (testimonio de Gerry) | F2 en inventario (requiere inyección de flag `has_f2` en el system prompt de Gerry en el servidor LLM; sin este flag, Gerry no ofrece T3 independientemente de la pregunta del jugador) |
 | Confesión de Barry | F1+F2+F3 marcados GOOD en la libreta |
 | Easter eggs (×5) | Final bueno completado |
 | Puerta de escalera principal | F2 (llave maestra) en inventario |
 | Stain state progression | Milestones de investigación según §5.2 |
-| LLM NPC responses | Servidor Python + FastAPI en red local (WiFi Quest 2 ↔ PC) |
+| LLM NPC responses | Servidor Python + FastAPI en localhost (misma máquina que el juego) |
 
 **Nota de área adyacente:** Este es un juego de nivel único. No hay áreas adyacentes fuera de El Agave y La Luna.
 
@@ -367,9 +326,9 @@ Los siguientes problemas son **BLOQUEANTES** para accesibilidad total. Documenta
 |---|---|---|---|
 | ACC-01 | STT sin fallback no-voz (usuarios sin micrófono o con impedimentos del habla) | BLOQUEANTE | Modo de selección de temas (8-12 opciones por NPC) o teclado VR en Fase 2 |
 | ACC-02 | Zona 4 solo iluminación verde — deuteranopia/protanopia no pueden navegar | BLOQUEANTE | Añadir apliques incandescentes + tiras reflectoras (fix de arte, Fase 2) |
-| ACC-03 | UV wand requiere hold sostenido — riesgo para usuarios con temblor | BLOQUEANTE | Cambiar a toggle (una presión activa, otra desactiva) en Fase 2 |
+| ACC-03 | ~~UV wand~~ — eliminada. Deuda resuelta por remoción del sistema. | ~~BLOQUEANTE~~ | ✅ Resuelto en v1.1 |
 | ACC-04 | Zona 6 paredes muy oscuras — bajo contraste para navegación | BLOQUEANTE | Incrementar luz ambiente en la sala de interrogatorio (fix de arte, Fase 2) |
-| ACC-05 | UV wand no se ofrece si el jugador llega a Zona 5 sin pasar por Zona 2 | BLOQUEANTE | Gajito ofrece la linterna UV al entrar a Zona 4 (segunda oportunidad garantizada antes de la escena del crimen) |
+| ACC-05 | ~~UV wand no se ofrece en ruta Zona1→Zona4~~ — eliminada. Deuda resuelta por remoción del sistema. | ~~BLOQUEANTE~~ | ✅ Resuelto en v1.1 |
 
 **Mejoras recomendadas (no bloqueantes):**
 - Sistema de subtítulos especificado (32px mínimo, fondo semitransparente, nombre del hablante)
@@ -387,8 +346,8 @@ El nivel pasa QA cuando todos los siguientes criterios están verificados:
 ### Ruta crítica
 - [ ] **CP-01** — Partida completa de inicio a final bueno sin softlock
 - [ ] **CP-02** — Cadena de 4 pasos del guardarropa completa con feedback correcto en cada paso
-- [ ] **CP-03** — F3 adquirido con UV wand (estado 1, hold 3s)
-- [ ] **CP-04** — Arc del UV se reinicia correctamente al romper el beam
+- [ ] **CP-03** — F3 (encendedor) adquirido con press-X en Zona 5; confirmado por Moni en diálogo
+- [ ] **CP-04** — Inventario muestra encendedor como "dueño desconocido" antes de hablar con Moni, y como F3 BUENA después
 - [ ] **CP-05** — Gate de acusación acepta exactamente F1+F2+F3 GOOD como mínimo
 
 ### Sistemas
@@ -400,14 +359,14 @@ El nivel pasa QA cuando todos los siguientes criterios están verificados:
 ### NPCs
 - [ ] **NPC-03** — T2 de Moni se ofrece sin gate de prerequisito; coaching line de Gajito ("traje amarillo...") se activa tras recibirla y el jugador no ha visitado Zona 5
 - [ ] **NPC-05** — T3 de Gerry bloqueado hasta tener F2 en inventario
-- [ ] **NPC-06** — Pipeline STT→LLM→TTS completa en <8s desde fin del habla del jugador. La respuesta (a) está en inglés, (b) referencia al menos una entidad de la última emisión del jugador, (c) no repite textualmente el turno NPC previo. Los tres sub-criterios verificados en test de integración y logueados.
+- [ ] **NPC-06** — Pipeline STT→LLM completa en <5s desde fin del habla del jugador. La respuesta (a) está en inglés, (b) referencia al menos una entidad de la última emisión del jugador, (c) no repite textualmente el turno NPC previo. Los tres sub-criterios verificados en test de integración y logueados.
 
 ### Accesibilidad (BLOQUEANTE — requerido antes de QA formal)
 - [ ] **ACC-01** — Ruta crítica (CP-01) completable usando solo controladores VR con STT desactivado; ningún paso exige entrada de voz
 - [ ] **ACC-02** — Zona 4 navegable sin identificar colores: apliques incandescentes y tiras reflectoras presentes y visibles en build de Quest 2
-- [ ] **ACC-03** — UV wand opera en modo toggle (una presión activa, otra desactiva); F3 adquirible en ≥95% de intentos en test de integración
+- [x] **ACC-03** — Resuelto: UV wand eliminada. F3 es press-X en objeto físico.
 - [ ] **ACC-04** — Zona 6: contraste mínimo 4.5:1 entre paredes y objetos interactivos verificado en capturas de Quest 2
-- [ ] **ACC-05** — Gajito ofrece UV wand al entrar a Zona 4 si el jugador no la recibió en Zona 2; verificado via ruta Zona1→Zona4 sin pasar por Zona 2
+- [x] **ACC-05** — Resuelto: UV wand eliminada. F3 es un objeto físico en Zona 5 sin prerequisito de herramienta.
 
 ### Finales
 - [ ] Final bueno (Barry confiesa) verificado
@@ -444,7 +403,7 @@ El plan completo de QA (34 casos automatizables + 16 manuales + checklist de 25 
 1. Confirmar condiciones exactas de finales B1–B4 con el game designer
 2. Documentar triggers y contenido de los 5 easter eggs
 3. Definir criterio medible para "respuesta LLM noir-apropiada" (propuesta: <8s, sin referencias a mecánicas del juego)
-4. Confirmar timeout oficial del pipeline STT→LLM→TTS
+4. Confirmar timeout oficial del pipeline STT→LLM (sin TTS — balbuceo local). Propuesta: <5s end-to-end.
 
 ---
 
