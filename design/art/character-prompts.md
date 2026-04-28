@@ -31,6 +31,29 @@ flat color areas, detective mystery atmosphere, character sheet white background
 
 ---
 
+### Limonchero
+*El protagonista (jugador). Limón amarillo grande. El mejor detective de LATAM.*
+
+```text
+low-poly faceted 3D character, anthropomorphic yellow lemon fruit character, 
+film noir 1950s aesthetic, hard side lighting, dark moody background, 
+cartoon stylized proportions, angular geometry with visible polygon faces, 
+flat color areas, detective mystery atmosphere, character sheet white background,
+bright yellow skin color #FFDE00, slight lemon peel matte texture, 
+large sturdy round body shape, imposing and serious posture, 
+classic 1950s hardboiled detective beige trench coat worn open, dark brown fedora tilted low over eyes, 
+sharp intense expression, world-weary look, 
+full body front and side view, character turnaround sheet
+```
+
+**Parámetros Midjourney:** `--ar 3:4 --style raw --v 6`
+
+**Notas de ajuste:**
+- Si se parece demasiado a su asistente (Gajito) → agregar `large yellow lemon, distinctive bright yellow, NOT green, tall sturdy build`
+- Si el abrigo no tiene el estilo adecuado → agregar `classic noir detective trench coat and fedora hat, 1950s hardboiled style`
+
+---
+
 ### Gajito
 *Asistente del detective. Key lime pequeño y nervioso.*
 
@@ -190,6 +213,30 @@ full body front and side view, character turnaround sheet
 - Si la piel sale muy roja (similar a Moni) → agregar `brownish orange skin, clearly orange not red, warm terracotta not crimson`
 - Si no tiene la corona del caqui → agregar `four-pointed leaf crown on head, persimmon calyx hair accessory`
 - Si no tiene manchas de tinta → agregar `ink stained fingertips, accountant ink marks on hands`
+
+---
+
+### Cornelius "Corn" Maize
+*La víctima. Mazorca de maíz. Dueño del club. Sabe los secretos de todos.*
+
+```text
+low-poly faceted 3D character, anthropomorphic corn cob vegetable character, 
+film noir 1950s aesthetic, hard side lighting, dark moody background, 
+cartoon stylized proportions, angular geometry with visible polygon faces, 
+flat color areas, detective mystery atmosphere, character sheet white background,
+bright yellow corn kernels skin color #FFD700, pale green husk leaves #A8E6CF draped over shoulders like a cape, 
+older wealthy businessman archetype 60s, imposing powerful presence, 
+expensive 1950s tailored dark brown suit #3E2723, gold pocket watch chain, 
+thick cigar in mouth, arrogant and composed expression, 
+full body front and side view, character turnaround sheet
+```
+
+**Parámetros Midjourney:** `--ar 3:4 --style raw --v 6`
+
+**Notas de ajuste:**
+- Si parece demasiado joven → agregar `older mature character, age 60s, weathered face, wealthy boss archetype`
+- Si no parece maíz → agregar `clearly visible yellow corn kernels on head and face, green corn husks acting as clothing details`
+- Si se necesita para un retrato en la pared (ya que el personaje en escena está muerto) → agregar `framed painting style, old vintage photograph look` al estilo base
 
 ---
 
