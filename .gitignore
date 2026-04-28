@@ -17,3 +17,4 @@ design/
 production/
 tools/blender/
 CLAUDE.md
+generate_details.py
