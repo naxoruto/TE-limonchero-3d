@@ -9,6 +9,7 @@ __pycache__/
 .env
 .mcp.json
 .claude/settings.local.json
+.claude
 
 # User requested ignores
 assets/models/
